@@ -48,8 +48,14 @@
                         <ListBox x:Name="WorkoutTemplatesListBox" ItemsSource="{Binding WorkoutTemplates}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedWorkoutTemplate}" Height="200" Margin="0,0,0,10"/>
                         <Button Content="Create New Template" Command="{Binding CreateWorkoutTemplateCommand}" Padding="10" FontSize="14"/>
                     </StackPanel>
+                    
+                    
                 </Grid>
-                <!-- Footer -->
+                
+            </TabItem>
+
+            <!-- Screen 2 -->
+            <TabItem Header="Screen 2">
                 <Border Grid.Row="2" Background="#FF2D2D30" Padding="10">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                         <Button Content="Home" Padding="10" Margin="5" FontSize="14"/>
@@ -59,17 +65,13 @@
                 </Border>
             </TabItem>
 
-            <!-- Screen 2 -->
-            <TabItem Header="Screen 2">
-
-            </TabItem>
-
             <!-- Screen 3 -->
             <TabItem Header="Screen 3">
 
             </TabItem>
         </TabControl>
 
+        <!-- Footer -->
 
     </Grid>
 </Window>
