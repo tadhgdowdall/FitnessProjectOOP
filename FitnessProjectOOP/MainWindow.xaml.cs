@@ -25,6 +25,15 @@ namespace FitnessProjectOOP
 
         }
 
+              // Event handler for Border_MouseDown
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                this.DragMove(); // Allows the window to be dragged
+            }
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 

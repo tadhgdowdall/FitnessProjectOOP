@@ -7,90 +7,77 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         MinWidth="428"
-        WindowStyle="none"
-        AllowsTransparency="True"
+        WindowStyle="None"
+        AllowsTransparency="False"
         ResizeMode="CanResizeWithGrip"
-        WindowStartupLocation="CenterScreen"
-        Background="Transparent"
-        >
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
-    
-        
-        
+        <!-- Resources here if needed -->
     </Window.Resources>
-    <Grid>
-
+    <Grid Background="#282D33">
+        <!-- Border for the main content area -->
         <Border Background="#282D33"
-                BorderBrush="#3A4149"
-                BorderThickness="5"
-                CornerRadius="8,8,0,8"/>
+        BorderBrush="#3A4149"
+        BorderThickness="5"
+        CornerRadius="8"
+        MouseDown="Border_MouseDown"/>
 
 
-        <!-- Grid Layout --><!--
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            --><!-- Header --><!--
-            <RowDefinition Height="*"/>
-            --><!-- Main Content --><!--
-            <RowDefinition Height="Auto"/>
-            --><!-- Footer --><!--
-        </Grid.RowDefinitions>
+        <!-- Main layout Grid -->
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <!-- Header -->
+                <RowDefinition Height="*"/>
+                <!-- Main Content -->
+                <RowDefinition Height="Auto"/>
+                <!-- Footer -->
+            </Grid.RowDefinitions>
 
+            <!-- TabControl for the main content -->
+            <TabControl Grid.Row="1" Background="#282D33" >
+                <TabItem Header="Screen 1">
+                    <Grid Background="#282D33">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
 
-  
+                        <!-- Left Side: Muscle Group Selection -->
+                        <StackPanel Grid.Column="0" Margin="10">
+                            <TextBlock Text="Select Muscle Group" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                            <ComboBox x:Name="MuscleGroupcbx" ItemsSource="{Binding MuscleGroups}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedMuscleGroup}" Margin="0,0,0,10"/>
+                            <Button x:Name="RecommendExcercisebtn" Content="Recommend Exercises" Command="{Binding RecommendExercisesCommand}" Padding="10" FontSize="14"/>
+                        </StackPanel>
 
-    
-        <TabControl>
-            --><!-- Screen 1 --><!--
-            <TabItem Header="Screen 1">
+                        <!-- Right Side: Workout Templates -->
+                        <StackPanel Grid.Column="1" Margin="10">
+                            <TextBlock Text="Workout Templates" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                            <ListBox x:Name="WorkoutTemplatesListBox" ItemsSource="{Binding WorkoutTemplates}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedWorkoutTemplate}" Height="200" Margin="0,0,0,10"/>
+                            <Button Content="Create New Template" Command="{Binding CreateWorkoutTemplateCommand}" Padding="10" FontSize="14"/>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
 
-                --><!-- Main Content --><!--
-                <Grid Grid.Row="1" Margin="20">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
+                <TabItem Header="Screen 2">
+                    <!-- Content for Screen 2 -->
+                </TabItem>
 
-                    --><!-- Left Side: Muscle Group Selection --><!--
-                    <StackPanel Grid.Column="0" Margin="10">
-                        <TextBlock Text="Select Muscle Group" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                        <ComboBox x:Name="MuscleGroupcbx" ItemsSource="{Binding MuscleGroups}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedMuscleGroup}" Margin="0,0,0,10"/>
-                        <Button x:Name="RecommendExcercisebtn" Content="Recommend Exercises" Command="{Binding RecommendExercisesCommand}" Padding="10" FontSize="14"/>
-                    </StackPanel>
+                <TabItem Header="Screen 3">
+                    <Grid>
+                        <!-- Content for Screen 3 -->
+                    </Grid>
+                </TabItem>
+            </TabControl>
 
-                    --><!-- Right Side: Workout Templates --><!--
-                    <StackPanel Grid.Column="1" Margin="10">
-                        <TextBlock Text="Workout Templates" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                        <ListBox x:Name="WorkoutTemplatesListBox" ItemsSource="{Binding WorkoutTemplates}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedWorkoutTemplate}" Height="200" Margin="0,0,0,10"/>
-                        <Button Content="Create New Template" Command="{Binding CreateWorkoutTemplateCommand}" Padding="10" FontSize="14"/>
-                    </StackPanel>
-                    
-                    
-                </Grid>
-
-                
-            </TabItem>
-
-            --><!-- Screen 2 --><!--
-            <TabItem Header="Screen 2">
-                <Border Grid.Row="2" Background="#FF2D2D30" Padding="10">
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                        <Button Content="Home" Padding="10" Margin="5" FontSize="14"/>
-                        <Button Content="Exercises" Padding="10" Margin="5" FontSize="14"/>
-                        <Button Content="Profile" Padding="10" Margin="5" FontSize="14"/>
-                    </StackPanel>
-                </Border>
-            </TabItem>
-
-            --><!-- Screen 3 --><!--
-            <TabItem Header="Screen 3">
-                <Grid>
-                    
-                </Grid>
-            </TabItem>
-        </TabControl>-->
-
-        <!-- Footer -->
-
+            <!-- Footer -->
+            <Border Grid.Row="2" Background="#282D33" Padding="10">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Content="Home" Padding="10" Margin="5" FontSize="14"/>
+                    <Button Content="Exercises" Padding="10" Margin="5" FontSize="14"/>
+                    <Button Content="Profile" Padding="10" Margin="5" FontSize="14"/>
+                </StackPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Window>
