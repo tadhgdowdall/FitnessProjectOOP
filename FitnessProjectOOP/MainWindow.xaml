@@ -5,44 +5,60 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitnessProjectOOP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        MinWidth="428"
+        WindowStyle="none"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        >
+    <Window.Resources>
+    
+        
+        
+    </Window.Resources>
     <Grid>
-        
-        
-        <!-- Grid Layout -->
+
+        <Border Background="#282D33"
+                BorderBrush="#3A4149"
+                BorderThickness="5"
+                CornerRadius="8,8,0,8"/>
+
+
+        <!-- Grid Layout --><!--
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <!-- Header -->
+            --><!-- Header --><!--
             <RowDefinition Height="*"/>
-            <!-- Main Content -->
+            --><!-- Main Content --><!--
             <RowDefinition Height="Auto"/>
-            <!-- Footer -->
+            --><!-- Footer --><!--
         </Grid.RowDefinitions>
 
 
   
 
-        <!-- Header -->
-
+    
         <TabControl>
-            <!-- Screen 1 -->
+            --><!-- Screen 1 --><!--
             <TabItem Header="Screen 1">
 
-                <!-- Main Content -->
+                --><!-- Main Content --><!--
                 <Grid Grid.Row="1" Margin="20">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <!-- Left Side: Muscle Group Selection -->
+                    --><!-- Left Side: Muscle Group Selection --><!--
                     <StackPanel Grid.Column="0" Margin="10">
                         <TextBlock Text="Select Muscle Group" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-                        <ComboBox x:Name="MuscleGroupComboBox" ItemsSource="{Binding MuscleGroups}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedMuscleGroup}" Margin="0,0,0,10"/>
-                        <Button Content="Recommend Exercises" Command="{Binding RecommendExercisesCommand}" Padding="10" FontSize="14"/>
+                        <ComboBox x:Name="MuscleGroupcbx" ItemsSource="{Binding MuscleGroups}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedMuscleGroup}" Margin="0,0,0,10"/>
+                        <Button x:Name="RecommendExcercisebtn" Content="Recommend Exercises" Command="{Binding RecommendExercisesCommand}" Padding="10" FontSize="14"/>
                     </StackPanel>
 
-                    <!-- Right Side: Workout Templates -->
+                    --><!-- Right Side: Workout Templates --><!--
                     <StackPanel Grid.Column="1" Margin="10">
                         <TextBlock Text="Workout Templates" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
                         <ListBox x:Name="WorkoutTemplatesListBox" ItemsSource="{Binding WorkoutTemplates}" DisplayMemberPath="Name" SelectedItem="{Binding SelectedWorkoutTemplate}" Height="200" Margin="0,0,0,10"/>
@@ -51,10 +67,11 @@
                     
                     
                 </Grid>
+
                 
             </TabItem>
 
-            <!-- Screen 2 -->
+            --><!-- Screen 2 --><!--
             <TabItem Header="Screen 2">
                 <Border Grid.Row="2" Background="#FF2D2D30" Padding="10">
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
@@ -65,11 +82,13 @@
                 </Border>
             </TabItem>
 
-            <!-- Screen 3 -->
+            --><!-- Screen 3 --><!--
             <TabItem Header="Screen 3">
-
+                <Grid>
+                    
+                </Grid>
             </TabItem>
-        </TabControl>
+        </TabControl>-->
 
         <!-- Footer -->
 

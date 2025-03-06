@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <!-- Global Styles -->
+        <!-- Global Styles --><!--
         <Style TargetType="TabItem">
             <Setter Property="Background" Value="Aqua"/>
         </Style>
@@ -20,6 +20,6 @@
             <Setter Property="Foreground" Value="#FF2D2D30"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Margin" Value="0,0,0,10"/>
-        </Style>
+        </Style>-->
     </Application.Resources>
 </Application>
