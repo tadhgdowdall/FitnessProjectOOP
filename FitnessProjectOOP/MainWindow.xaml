@@ -19,9 +19,8 @@
         <Border Background="#282D33"
         BorderBrush="#3A4149"
         BorderThickness="5"
-        CornerRadius="8"
-        MouseDown="Border_MouseDown"/>
-    
+        CornerRadius="8"/>
+
         <!--Test -->
 
         <!-- Main layout Grid -->
@@ -62,11 +61,54 @@
 
                 <TabItem Header="Screen 2">
                     <!-- Content for Screen 2 -->
+                    <Grid Background="#282D33">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Create New Template Button -->
+                        <Button Grid.Row="0" Content="Create New Template" Width="200" Margin="10" HorizontalAlignment="Left"/>
+
+                        <!-- Workout Template List -->
+                        <ListBox Grid.Row="1" Margin="10">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Margin="5">
+                                        <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold"/>
+                                        <TextBlock Text="Excercises" FontSize="14"/>
+                                        <Button Content="Start Workout" Width="120" Margin="0,5"/>
+                                        <Button Content="Edit" Width="80" Margin="0,5"/>
+                                        <Button Content="Delete" Width="80" Margin="0,5"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                  
                 </TabItem>
 
                 <TabItem Header="Screen 3">
                     <Grid>
-                        <!-- Content for Screen 3 -->
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <TextBlock Text="User Profile" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+
+                            <!-- User Information -->
+                            <TextBlock Text="Name: (User Name)" FontSize="16" Foreground="White"/>
+                            <TextBlock Text="Age: (User Age)" FontSize="16" Foreground="White"/>
+                            <TextBlock Text="Weight: (User Weight)" FontSize="16" Foreground="White"/>
+                            <TextBlock Text="Height: (User Height)" FontSize="16" Foreground="White"/>
+
+                            <!-- Fitness Goals -->
+                            <ComboBox x:Name="FitnessGoalsComboBox" Margin="0,20,0,10">
+                                <ComboBoxItem Content="Lose Weight"/>
+                                <ComboBoxItem Content="Build Muscle"/>
+                                <ComboBoxItem Content="Improve Endurance"/>
+                            </ComboBox>
+
+                            <!-- Save Button -->
+                            <Button Content="Save Profile" Width="200" Margin="0,20"/>
+                        </StackPanel>
                     </Grid>
                 </TabItem>
             </TabControl>
@@ -75,7 +117,7 @@
             <Border Grid.Row="2" Background="#282D33" Padding="10">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                     <Button Content="Home" Padding="10" Margin="5" FontSize="14"/>
-                    <Button Content="Exercises" Padding="10" Margin="5" FontSize="14"/>
+                    <Button Content="Templates" Padding="10" Margin="5" FontSize="14"/>
                     <Button Content="Profile" Padding="10" Margin="5" FontSize="14"/>
                 </StackPanel>
             </Border>
