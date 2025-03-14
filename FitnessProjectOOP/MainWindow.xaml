@@ -91,7 +91,7 @@
                 <TabItem Header="Screen 3">
                     <Grid>
                         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <TextBlock Text="User Profile" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
+                            <TextBlock Text="User Profile" Foreground="white" FontSize="24" FontWeight="Bold" Margin="0,0,0,20"/>
 
                             <!-- User Information -->
                             <TextBlock Text="Name: (User Name)" FontSize="16" Foreground="White"/>
@@ -111,7 +111,67 @@
                         </StackPanel>
                     </Grid>
                 </TabItem>
+
+
+                <TabItem Header="Screen 4">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="2*"/>
+
+                        </Grid.RowDefinitions>
+
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
+                            <TextBlock Foreground="white" FontSize="16" Text="Excercises" HorizontalAlignment="Center"/>
+
+                            <ComboBox x:Name="DropdownMenu" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200
+                                      ">
+                                <ComboBoxItem Content="Bicep"/>
+                                <ComboBoxItem Content="Tricep"/>
+                                <ComboBoxItem Content="Legs"/>
+                                <ComboBoxItem Content="Chest"/>
+                            </ComboBox>
+
+                            <Button Content="Recommend Excercises" Margin="0,6,0,0" Padding="8"/>
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <ListBox x:Name="lbxRecommendedExercises"  Height="200" Width="200" Margin="0,0,0,10"/>
+
+
+                        </StackPanel>
+
+
+                    </Grid>
+                </TabItem>
+
+
+                <TabItem Header="Screen 5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="3*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                       <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Foreground="White" Text="Workout Templates" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+            <ListBox x:Name="lbxWorkoutTemplates" Height="200" Width="400" Margin="0,0,0,10"/>
+        </StackPanel>
+
+        <!-- Bottom Section: Buttons -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="Start Workout" Margin="10,0,10,0" Padding="5" Width="100"/>
+            <Button Content="Create Template" Margin="10,0,10,0" Padding="5" Width="100"/>
+        </StackPanel>
+
+                    </Grid>
+                </TabItem>
+
+
             </TabControl>
+            
+            
 
             <!-- Footer -->
             <Border Grid.Row="2" Background="#282D33" Padding="10">
