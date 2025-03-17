@@ -10,7 +10,8 @@
         WindowStyle="None"
         AllowsTransparency="False"
         ResizeMode="CanResizeWithGrip"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded_1">
     <Window.Resources>
         <!-- Resources here if needed -->
     </Window.Resources>
@@ -136,37 +137,37 @@
 
 
                 <TabItem Header="Screen 4">
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="2*"/>
+      <Grid>
+          <Grid.RowDefinitions>
+              <RowDefinition Height="*"/>
+              <RowDefinition Height="2*"/>
 
-                        </Grid.RowDefinitions>
+          </Grid.RowDefinitions>
 
-                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
-                            <TextBlock Foreground="white" FontSize="16" Text="Excercises" HorizontalAlignment="Center"/>
+          <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
+              <TextBlock Foreground="white" FontSize="16" Text="Excercises" HorizontalAlignment="Center"/>
 
-                            <ComboBox x:Name="DropdownMenu" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200
-                                      ">
-                                <ComboBoxItem Content="Bicep"/>
-                                <ComboBoxItem Content="Tricep"/>
-                                <ComboBoxItem Content="Legs"/>
-                                <ComboBoxItem Content="Chest"/>
-                            </ComboBox>
+              <ComboBox x:Name="DropdownMenu" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200
+                        ">
+                  <ComboBoxItem Content="Bicep"/>
+                  <ComboBoxItem Content="Tricep"/>
+                  <ComboBoxItem Content="Legs"/>
+                  <ComboBoxItem Content="Chest"/>
+              </ComboBox>
 
-                            <Button Content="Recommend Excercises" Margin="0,6,0,0" Padding="8"/>
+              <Button Content="Recommend Excercises" Margin="0,6,0,0" Padding="8"/>
 
-                        </StackPanel>
+          </StackPanel>
 
-                        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
-                            <ListBox x:Name="lbxRecommendedExercises"  Height="200" Width="200" Margin="0,0,0,10"/>
-
-
-                        </StackPanel>
+          <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+              <ListBox x:Name="lbxRecommendedExercises"  Height="200" Width="200" Margin="0,0,0,10"/>
 
 
-                    </Grid>
-                </TabItem>
+          </StackPanel>
+
+
+      </Grid>
+  </TabItem>
 
 
                 <TabItem Header="Screen 5">

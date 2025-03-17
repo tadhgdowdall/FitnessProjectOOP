@@ -46,5 +46,10 @@ namespace FitnessProjectOOP
 
 
         }
+
+        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
