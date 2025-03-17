@@ -65,25 +65,47 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <!-- Create New Template Button -->
-                        <Button Grid.Row="0" Content="Create New Template" Width="200" Margin="10" HorizontalAlignment="Left"/>
+                        <!-- Title -->
+                        <TextBlock Grid.Row="0" Text="Workout Templates" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,10"/>
 
-                        <!-- Workout Template List -->
-                        <ListBox Grid.Row="1" Margin="10">
+                        <!-- List of Workout Templates -->
+                        <ListBox Grid.Row="1" x:Name="WorkoutTemplatesList" Margin="20" >
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <StackPanel Margin="5">
-                                        <TextBlock Text="{Binding Name}" FontSize="16" FontWeight="Bold"/>
-                                        <TextBlock Text="Excercises" FontSize="14"/>
-                                        <Button Content="Start Workout" Width="120" Margin="0,5"/>
-                                        <Button Content="Edit" Width="80" Margin="0,5"/>
-                                        <Button Content="Delete" Width="80" Margin="0,5"/>
+                                    <StackPanel>
+                                        <TextBlock Text="Name awdasdwdasdwdasd" FontSize="16" FontWeight="Bold"/>
+                                        <TextBlock Text="Namwdawdawdasdwdasdwd" FontSize="12" Foreground="Black"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
+
+                        <!-- Buttons -->
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,20">
+                            <Button Content="Create Template" Width="120" Margin="10" Padding="5"/>
+                            <Button Content="Edit Template" Width="120" Margin="10" Padding="5"/>
+                            <Button Content="Delete Template" Width="120" Margin="10" Padding="5" />
+                        </StackPanel>
+
+                        <!-- Details of Selected Template -->
+                        <Border Grid.Row="1" Grid.Column="1" Background="LightGray" Margin="10" Padding="10" Visibility="Collapsed" x:Name="TemplateDetailsBorder">
+                            <StackPanel>
+                                <TextBlock Text="Template Details" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                                <TextBlock x:Name="TemplateNameText" FontSize="16"/>
+                                <TextBlock x:Name="TemplateDescriptionText" FontSize="14" Foreground="Gray"/>
+                                <TextBlock Text="Exercises:" FontSize="16" Margin="0,10,0,5"/>
+                                <ListBox x:Name="ExercisesList" Height="100">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock  Text="wdasdty"/>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </StackPanel>
+                        </Border>
                     </Grid>
                   
                 </TabItem>
@@ -155,16 +177,38 @@
                         </Grid.RowDefinitions>
 
                        <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Foreground="White" Text="Workout Templates" FontSize="18" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+            <TextBlock Foreground="White" Text="Workout Templates" FontSize="24" FontWeight="Bold" Margin="0,0,0,10" HorizontalAlignment="Center"/>
             <ListBox x:Name="lbxWorkoutTemplates" Height="200" Width="400" Margin="0,0,0,10"/>
         </StackPanel>
 
         <!-- Bottom Section: Buttons -->
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Button Content="Start Workout" Margin="10,0,10,0" Padding="5" Width="100"/>
-            <Button Content="Create Template" Margin="10,0,10,0" Padding="5" Width="100"/>
+            <Button x:Name="btnCreateTemplate" Content="Create Template" Margin="10,0,10,0" Padding="5" Width="100" Click="btnCreateTemplate_Click"/>
         </StackPanel>
 
+                    </Grid>
+                </TabItem>
+
+
+                <TabItem  Header="Screen 5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Title -->
+                        <TextBlock Grid.Row="0" Text="Workout History" Foreground="white" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,10"/>
+
+                        <!-- Workout History List -->
+                        <DataGrid Grid.Row="1" x:Name="WorkoutHistoryGrid" Margin="20" AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"/>
+                                <DataGridTextColumn Header="Workout" Binding="{Binding WorkoutName}" Width="*"/>
+                                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
                     </Grid>
                 </TabItem>
 

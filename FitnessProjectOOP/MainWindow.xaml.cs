@@ -38,5 +38,13 @@ namespace FitnessProjectOOP
         {
 
         }
+
+        private void btnCreateTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Creating a new workout template");
+
+
+
+        }
     }
 }
