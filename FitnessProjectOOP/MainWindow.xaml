@@ -155,7 +155,7 @@
                   <ComboBoxItem Content="Chest"/>
               </ComboBox>
 
-              <Button Content="Recommend Excercises" Margin="0,6,0,0" Padding="8"/>
+              <Button x:Name="btnRecommendExercises" Content="Recommend Excercises" Margin="0,6,0,0" Padding="8" Click="btnRecommendExercises_Click"/>
 
           </StackPanel>
 

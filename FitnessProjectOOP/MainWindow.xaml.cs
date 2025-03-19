@@ -51,5 +51,10 @@ namespace FitnessProjectOOP
         {
 
         }
+
+        private void btnRecommendExercises_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
