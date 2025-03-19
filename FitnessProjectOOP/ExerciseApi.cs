@@ -45,7 +45,8 @@ namespace FitnessProjectOOP
                 // Print the exercises to the console
                 foreach (var exercise in exercises)
                 {
-                    Console.WriteLine($"Name: {exercise.Name}, Body Part: {exercise.BodyPart}, Equipment: {exercise.Equipment}");
+                    Console.WriteLine(exercise.name);
+                    //Console.WriteLine($"Name: {exercise.Name}, Body Part: {exercise.BodyPart}, Equipment: {exercise.Equipment}");
                 }
 
                 Console.WriteLine(body);

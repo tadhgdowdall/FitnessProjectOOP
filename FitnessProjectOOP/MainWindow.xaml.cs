@@ -64,7 +64,7 @@ namespace FitnessProjectOOP
             ExerciseApi exerciseApi = new ExerciseApi();
 
 
-            exerciseApi.BodyPart = name;
+            exerciseApi.BodyPart = name.ToLower();
 
             await exerciseApi.FetchExercisesAsync();
 
