@@ -222,8 +222,9 @@
             
 
             <!-- Footer -->
-            <Border Grid.Row="2" Background="#282D33" Padding="10">
+            <Border Grid.Row="2" Background="White" Padding="10">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image Name="MuscleImage" Source="Assets/weight.png" Width="32" Cursor="Hand" />
                     <Button Content="Home" Padding="10" Margin="5" FontSize="14"/>
                     <Button Content="Templates" Padding="10" Margin="5" FontSize="14"/>
                     <Button Content="Profile" Padding="10" Margin="5" FontSize="14"/>
