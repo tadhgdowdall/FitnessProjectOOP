@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
+
 namespace FitnessProjectOOP
 {
 
@@ -23,7 +24,7 @@ namespace FitnessProjectOOP
                 RequestUri = new Uri($"https://exercisedb.p.rapidapi.com/exercises/bodyPart/{BodyPart}?limit=4&offset=0"),
                 Headers =
                 {
-                    { "x-rapidapi-key", "4f0c197b21mshdf077300ef190aep12b76djsn6d594e9e9bdd" }, 
+                    { "x-rapidapi-key", "4f0c197b21mshdf077300ef190aep12b76djsn6d594e9e9bdd" },
                     { "x-rapidapi-host", "exercisedb.p.rapidapi.com" },
                 },
             };
@@ -37,9 +38,18 @@ namespace FitnessProjectOOP
                 // Read and output response body
                 var body = await response.Content.ReadAsStringAsync();
 
+ 
+                // Deserialize the JSON response using Newtonsoft.Json
+                var exercises = JsonConvert.DeserializeObject<List<Exercise>>(body);
 
+                // Print the exercises to the console
+                foreach (var exercise in exercises)
+                {
+                    Console.WriteLine($"Name: {exercise.Name}, Body Part: {exercise.BodyPart}, Equipment: {exercise.Equipment}");
+                }
 
                 Console.WriteLine(body);
+
             }
             catch (HttpRequestException e)
             {
@@ -50,14 +60,14 @@ namespace FitnessProjectOOP
                 Console.WriteLine($"An unexpected error occurred: {e.Message}");
             }
         }
-    
 
 
-    //public static async Task Main(string[] args)
-    //    {
-    //        var api = new ExerciseApi();
-    //        await api.FetchExercisesAsync();
-    //    }
+
+        //public static async Task Main(string[] args)
+        //    {
+        //        var api = new ExerciseApi();
+        //        await api.FetchExercisesAsync();
+        //    }
 
 
     }

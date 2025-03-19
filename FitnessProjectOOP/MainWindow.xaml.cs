@@ -66,10 +66,10 @@ namespace FitnessProjectOOP
 
             exerciseApi.BodyPart = name;
 
-
             await exerciseApi.FetchExercisesAsync();
 
-         
+
+
 
 
 
