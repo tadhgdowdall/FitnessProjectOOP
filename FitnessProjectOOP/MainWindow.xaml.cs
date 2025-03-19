@@ -55,6 +55,14 @@ namespace FitnessProjectOOP
         private void btnRecommendExercises_Click(object sender, RoutedEventArgs e)
         {
 
+            // Gets selected combobox item and puts the value into string name
+            ComboBoxItem ComboItem = (ComboBoxItem)cbRecommendedExcercises.SelectedItem;
+            string name = ComboItem.Name;
+
+            Console.WriteLine(name);
+
+
+
         }
     }
 }

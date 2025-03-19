@@ -147,12 +147,15 @@
           <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
               <TextBlock Foreground="white" FontSize="16" Text="Excercises" HorizontalAlignment="Center"/>
 
-              <ComboBox x:Name="DropdownMenu" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200
+                            <ComboBox x:Name="cbRecommendedExcercises" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200
                         ">
-                  <ComboBoxItem Content="Bicep"/>
-                  <ComboBoxItem Content="Tricep"/>
-                  <ComboBoxItem Content="Legs"/>
-                  <ComboBoxItem Content="Chest"/>
+                  <ComboBoxItem Content="Back" Name="Back"/>
+                  <ComboBoxItem Content="Chest" Name="Chest"/>
+                  <ComboBoxItem Content="Shoulders" Name="Shoulders"/>
+                  <ComboBoxItem Content="Upper Arms" Name="UpperArms"/>
+                  <ComboBoxItem Content="Lower Arms" Name="LowerArms"/>
+                  <ComboBoxItem Content="Cardio" Name="Cardio"/>
+                                <!--back, cardio, chest, lower arms, lower legs, neck, shoulders, upper arms, upper legs, waist-->
               </ComboBox>
 
               <Button x:Name="btnRecommendExercises" Content="Recommend Excercises" Margin="0,6,0,0" Padding="8" Click="btnRecommendExercises_Click"/>
