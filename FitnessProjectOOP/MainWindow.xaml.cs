@@ -52,14 +52,25 @@ namespace FitnessProjectOOP
 
         }
 
-        private void btnRecommendExercises_Click(object sender, RoutedEventArgs e)
+        private async void btnRecommendExercises_Click(object sender, RoutedEventArgs e)
         {
 
             // Gets selected combobox item and puts the value into string name
-            ComboBoxItem ComboItem = (ComboBoxItem)cbRecommendedExcercises.SelectedItem;
+            ComboBoxItem ComboItem = (ComboBoxItem)cbxRecommendedExcercises.SelectedItem;
             string name = ComboItem.Name;
 
             Console.WriteLine(name);
+
+            ExerciseApi exerciseApi = new ExerciseApi();
+
+
+            exerciseApi.BodyPart = name;
+
+
+            await exerciseApi.FetchExercisesAsync();
+
+         
+
 
 
 

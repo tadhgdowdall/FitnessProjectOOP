@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace FitnessProjectOOP
 {
@@ -35,6 +36,9 @@ namespace FitnessProjectOOP
 
                 // Read and output response body
                 var body = await response.Content.ReadAsStringAsync();
+
+
+
                 Console.WriteLine(body);
             }
             catch (HttpRequestException e)

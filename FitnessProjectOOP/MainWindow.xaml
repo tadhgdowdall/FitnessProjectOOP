@@ -147,7 +147,7 @@
           <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="0">
               <TextBlock Foreground="white" FontSize="16" Text="Excercises" HorizontalAlignment="Center"/>
 
-                            <ComboBox x:Name="cbRecommendedExcercises" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200
+                            <ComboBox x:Name="cbxRecommendedExcercises" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200
                         ">
                   <ComboBoxItem Content="Back" Name="Back"/>
                   <ComboBoxItem Content="Chest" Name="Chest"/>
