@@ -169,7 +169,7 @@ namespace FitnessProjectOOP
                     // Set the ItemsSource directly - the ToString() will handle formatting
                     lbxRecommendedExercises.ItemsSource = exercises;
 
-                    // Alternative if you want different formatting:
+             
                     // lbxRecommendedExercises.DisplayMemberPath = "name";
                     // lbxRecommendedExercises.ItemsSource = exercises;
                 });
