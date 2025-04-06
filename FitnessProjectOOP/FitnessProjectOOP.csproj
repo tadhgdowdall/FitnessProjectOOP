@@ -69,10 +69,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CreateTemplate.xaml.cs">
+      <DependentUpon>CreateTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Exercise.cs" />
     <Compile Include="ExerciseApi.cs" />
     <Compile Include="ExerciseService.cs" />
     <Compile Include="WorkoutTemplate.cs" />
+    <Page Include="CreateTemplate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

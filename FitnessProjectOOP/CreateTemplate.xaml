@@ -1,0 +1,85 @@
+﻿<Window x:Class="FitnessProjectOOP.CreateTemplate"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Create Workout Template" 
+        Height="550" Width="700"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Template Details -->
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="Template Name:" FontWeight="Bold"/>
+            <TextBox x:Name="txtTemplateName" Margin="0,5,0,10" Padding="5"/>
+
+            <TextBlock Text="Description:" FontWeight="Bold"/>
+            <TextBox x:Name="txtDescription" Margin="0,5,0,10" 
+                     Height="60" Padding="5" 
+                     TextWrapping="Wrap" AcceptsReturn="True"/>
+        </StackPanel>
+
+        <!-- Add Exercise Section -->
+        <GroupBox Grid.Row="1" Header="Add Exercise">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="80"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Exercise Selection -->
+                <ComboBox x:Name="cmbExercises" Grid.Column="0" Margin="0,0,5,0" 
+                          DisplayMemberPath="Name" Padding="5"/>
+
+                <!-- Sets Input -->
+                <StackPanel Grid.Column="1" Margin="0,0,5,0">
+                    <TextBlock Text="Sets" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="txtSets" Padding="5" Text="3" TextAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Reps Input -->
+                <StackPanel Grid.Column="2" Margin="0,0,5,0">
+                    <TextBlock Text="Reps" HorizontalAlignment="Center"/>
+                    <TextBox x:Name="txtReps" Padding="5" Text="10" TextAlignment="Center"/>
+                </StackPanel>
+
+                <!-- Add Button -->
+                <Button x:Name="btnAddExercise" Grid.Column="3" 
+                        Content="Add" Padding="10,5" Margin="0,10,0,0" 
+                        Click="btnAddExercise_Click"/>
+            </Grid>
+        </GroupBox>
+
+        <!-- Exercises List -->
+        <DataGrid Grid.Row="2" x:Name="dgExercises" Margin="0,10,0,10"
+                  AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Exercise" Binding="{Binding Name}" Width="*"/>
+                <DataGridTextColumn Header="Sets" Binding="{Binding Sets}" Width="80"/>
+                <DataGridTextColumn Header="Reps" Binding="{Binding Reps}" Width="80"/>
+                <DataGridTemplateColumn Width="Auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Remove" Padding="5,2" 
+                                    Click="RemoveExercise_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Action Buttons -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="Cancel" Width="80" Margin="0,0,10,0" 
+                    Click="btnCancel_Click"/>
+            <Button Content="Save Template" Width="100" 
+                    Click="btnSave_Click" IsDefault="True"/>
+        </StackPanel>
+    </Grid>
+</Window>

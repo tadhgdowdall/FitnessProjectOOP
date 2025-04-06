@@ -20,6 +20,10 @@ namespace FitnessProjectOOP
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        private List<WorkoutTemplate> _workoutTemplates = new List<WorkoutTemplate>();
+
+
         public MainWindow()
         {
 
@@ -74,6 +78,27 @@ namespace FitnessProjectOOP
 
 
 
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var createTemplate = new CreateTemplate();
+            
+            if (createTemplate.ShowDialog() == true)
+            {
+                // Create the template object
+                var newTemplate = new
+                {
+                    Name = createTemplate.TemplateName,
+                    Description = createTemplate.Description,
+                    Exercises = createTemplate.Exercises.ToList()
+                };
+
+                // Refresh your UI ListBox/DataGrid
+                lbxWorkoutTemplate.ItemsSource = null;
+                lbxWorkoutTemplate.ItemsSource = _workoutTemplates;
+                MessageBox.Show("Template created successfully!");
+            }
         }
     }
 }

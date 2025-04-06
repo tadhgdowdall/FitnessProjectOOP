@@ -78,7 +78,7 @@
 
                         <TextBlock Grid.Row="0" Text="Workout Templates" FontSize="18" FontWeight="Bold" Margin="0,10" HorizontalAlignment="Center"/>
 
-                        <ListBox Grid.Row="1" x:Name="WorkoutTemplatesList" Margin="20,10">
+                        <ListBox Grid.Row="1" x:Name="lbxWorkoutTemplate" Margin="20,10">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Margin="5">
@@ -90,7 +90,7 @@
                         </ListBox>
 
                         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15">
-                            <Button Content="Create Template" Width="120" Margin="5" Padding="8"/>
+                            <Button Content="Create Template" Width="120" Margin="5" Padding="8" Click="Button_Click"/>
                             <Button Content="Edit Template" Width="120" Margin="5" Padding="8"/>
                             <Button Content="Delete Template" Width="120" Margin="5" Padding="8"/>
                         </StackPanel>
