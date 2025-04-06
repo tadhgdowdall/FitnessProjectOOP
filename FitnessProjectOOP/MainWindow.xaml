@@ -143,19 +143,43 @@
                             </ComboBox>
 
                             <Button x:Name="btnRecommendExercises" 
-                                    Content="Recommend Exercises" 
-                                    Margin="0,15,0,0" 
-                                    Padding="8,5"
-                                    HorizontalAlignment="Center"/>
+                    Content="Recommend Exercises" 
+                    Margin="0,15,0,0" 
+                    Padding="8,5"
+                    HorizontalAlignment="Center"
+                    Click="BtnRecommendExercises_Click_1"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="1" Margin="0,20">
                             <TextBlock Text="Recommended Exercises:" FontWeight="Bold" Margin="0,0,0,5"/>
-                            <ListBox x:Name="lbxRecommendedExercises" Height="200" Padding="5"/>
+                            <ListBox x:Name="lbxRecommendedExercises" Height="200" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Margin="5" Padding="5" Background="#FFF5F5F5" CornerRadius="3">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding name}" 
+                                  FontWeight="Bold"
+                                  TextWrapping="Wrap"/>
+                                                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                                    <TextBlock Text="Equipment: " FontWeight="SemiBold"/>
+                                                    <TextBlock Text="{Binding equipment}" 
+                                      FontStyle="Italic"
+                                      TextWrapping="Wrap"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                                    <TextBlock Text="Target: " FontWeight="SemiBold"/>
+                                                    <TextBlock Text="{Binding target}" 
+                                      Foreground="#FF555555"
+                                      TextWrapping="Wrap"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
                         </StackPanel>
                     </Grid>
                 </TabItem>
-
                 <!-- Screen 5 -->
                 <TabItem Header="Workouts" Padding="10">
                     <Grid Margin="10">
