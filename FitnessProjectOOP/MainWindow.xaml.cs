@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,12 +22,18 @@ namespace FitnessProjectOOP
     public partial class MainWindow : Window
     {
 
-        private List<WorkoutTemplate> _workoutTemplates = new List<WorkoutTemplate>();
+        private ObservableCollection<WorkoutTemplate> _workoutTemplates = new ObservableCollection<WorkoutTemplate>();
 
 
         public MainWindow()
         {
 
+
+            InitializeComponent();
+            // Loading sample templates
+            LoadSampleTemplates();
+
+            lbxWorkoutTemplate.ItemsSource = _workoutTemplates;
         }
 
               // Event handler for Border_MouseDown
@@ -41,6 +48,7 @@ namespace FitnessProjectOOP
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
+          
         }
 
         private void btnCreateTemplate_Click(object sender, RoutedEventArgs e)
@@ -51,9 +59,33 @@ namespace FitnessProjectOOP
 
         }
 
-        private void Window_Loaded_1(object sender, RoutedEventArgs e)
+        private void LoadSampleTemplates()
         {
+            // Sample data - replace with your actual loading logic
+            var chestWorkout = new WorkoutTemplate
+            {
+                Name = "Chest Day",
+                MuscleGroup = "Chest",
+                Exercises = new List<WorkoutTemplate>
+            {
+                new WorkoutTemplate { ExerciseName = "Bench Press", Sets = 4, Reps = 8 },
+                new WorkoutTemplate { ExerciseName = "Incline Press", Sets = 3, Reps = 10 }
+            }
+            };
 
+            var backWorkout = new WorkoutTemplate
+            {
+                Name = "Back Blaster",
+                MuscleGroup = "Back",
+                Exercises = new List<WorkoutTemplate>
+            {
+                new WorkoutTemplate { ExerciseName = "Pull-ups", Sets = 4, Reps = 6 },
+                new WorkoutTemplate { ExerciseName = "Bent-over Rows", Sets = 3, Reps = 10 }
+            }
+            };
+
+            _workoutTemplates.Add(chestWorkout);
+            _workoutTemplates.Add(backWorkout);
         }
 
         private async void btnRecommendExercises_Click(object sender, RoutedEventArgs e)
@@ -90,11 +122,15 @@ namespace FitnessProjectOOP
                 var newTemplate = new
                 {
                     Name = createTemplate.TemplateName,
-                    Description = createTemplate.Description,
-                    Exercises = createTemplate.Exercises.ToList()
+                    MuscleGroup = createTemplate.SelectedMuscleGroup,
+                    Exercises = createTemplate.Exercises.Select(ex => new WorkoutTemplate
+                    {
+                        Sets = ex.Sets,
+                        Reps = ex.Reps
+                    }).ToList()
                 };
 
-                // Refresh your UI ListBox/DataGrid
+               
                 lbxWorkoutTemplate.ItemsSource = null;
                 lbxWorkoutTemplate.ItemsSource = _workoutTemplates;
                 MessageBox.Show("Template created successfully!");
