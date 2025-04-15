@@ -153,24 +153,48 @@
                         <StackPanel Grid.Row="1" Margin="0,20">
                             <TextBlock Text="Recommended Exercises:" FontWeight="Bold" Margin="0,0,0,5"/>
                             <ListBox x:Name="lbxRecommendedExercises" Height="200" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <!-- Center items in the ListBox -->
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+
+                       
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListBoxItem">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <Border Margin="5" Padding="5" Background="#FFF5F5F5" CornerRadius="3">
+                                        <Border Margin="5" Padding="10" Background="#FFF5F5F5" CornerRadius="3"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
                                             <StackPanel>
                                                 <TextBlock Text="{Binding name}" 
-                                  FontWeight="Bold"
-                                  TextWrapping="Wrap"/>
-                                                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                               FontWeight="Bold"
+                               TextWrapping="Wrap"
+                               HorizontalAlignment="Center"/>
+                                                <StackPanel Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Center">
                                                     <TextBlock Text="Equipment: " FontWeight="SemiBold"/>
                                                     <TextBlock Text="{Binding equipment}" 
-                                      FontStyle="Italic"
-                                      TextWrapping="Wrap"/>
+                                   FontStyle="Italic"
+                                   TextWrapping="Wrap"/>
                                                 </StackPanel>
-                                                <StackPanel Orientation="Horizontal" Margin="0,2,0,0">
+                                                <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Center">
                                                     <TextBlock Text="Target: " FontWeight="SemiBold"/>
                                                     <TextBlock Text="{Binding target}" 
-                                      Foreground="#FF555555"
-                                      TextWrapping="Wrap"/>
+                                   Foreground="#FF555555"
+                                   TextWrapping="Wrap"/>
                                                 </StackPanel>
                                             </StackPanel>
                                         </Border>
