@@ -33,7 +33,6 @@ namespace FitnessProjectOOP
             InitializeComponent();
             // Loading sample templates
             LoadSampleTemplates();
-
             lbxWorkoutTemplate.ItemsSource = _workoutTemplates;
         }
 
@@ -65,7 +64,7 @@ namespace FitnessProjectOOP
             // Sample data - replace with your actual loading logic
             var chestWorkout = new WorkoutTemplate
             {
-                Name = "Chest Day",
+                Name = "Upper Body Workout",
                 MuscleGroup = "Chest",
                 Exercises = new List<WorkoutTemplate>
             {
@@ -76,7 +75,7 @@ namespace FitnessProjectOOP
 
             var backWorkout = new WorkoutTemplate
             {
-                Name = "Back Blaster",
+                Name = "Pull Day",
                 MuscleGroup = "Back",
                 Exercises = new List<WorkoutTemplate>
             {
