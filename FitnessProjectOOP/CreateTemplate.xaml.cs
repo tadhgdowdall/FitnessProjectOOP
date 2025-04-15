@@ -15,8 +15,10 @@ namespace FitnessProjectOOP
         }
 
         public string TemplateName => txtTemplateName.Text;
-        public string SelectedMuscleGroup => cmbMuscleGroups.SelectedItem?.ToString();
+        public string SelectedMuscleGroup => (cmbMuscleGroups.SelectedItem as ComboBoxItem)?.Content.ToString();
         public ObservableCollection<TemplateExercise> Exercises { get; } = new ObservableCollection<TemplateExercise>();
+
+        public readonly ObservableCollection<WorkoutTemplate> _workoutTemplates = new ObservableCollection<WorkoutTemplate>();
 
         public CreateTemplate()
         {
@@ -27,37 +29,83 @@ namespace FitnessProjectOOP
         private void cmbMuscleGroups_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (cmbMuscleGroups.SelectedItem == null) return;
+            else
+            {
 
-            // Enable exercise selection
+            }
+
+            // Enable exercise selection controls
             cmbExercises.IsEnabled = true;
             btnAddExercise.IsEnabled = true;
-
-            // Clear previous exercises
             cmbExercises.Items.Clear();
 
             // Load exercises for selected muscle group
-            // Replace this with your actual exercise loading logic
             switch (SelectedMuscleGroup)
             {
                 case "Back":
                     cmbExercises.Items.Add(new { Name = "Pull-ups" });
                     cmbExercises.Items.Add(new { Name = "Lat Pulldown" });
                     cmbExercises.Items.Add(new { Name = "Bent-over Rows" });
+                    cmbExercises.Items.Add(new { Name = "Deadlifts" });
+                    cmbExercises.Items.Add(new { Name = "T-Bar Rows" });
+                    cmbExercises.Items.Add(new { Name = "Seated Cable Rows" });
                     break;
+
                 case "Chest":
                     cmbExercises.Items.Add(new { Name = "Bench Press" });
                     cmbExercises.Items.Add(new { Name = "Push-ups" });
                     cmbExercises.Items.Add(new { Name = "Chest Fly" });
+                    cmbExercises.Items.Add(new { Name = "Incline Press" });
+                    cmbExercises.Items.Add(new { Name = "Decline Press" });
+                    cmbExercises.Items.Add(new { Name = "Cable Crossovers" });
                     break;
-                    // Add other muscle groups...
+
+                case "Shoulders":
+                    cmbExercises.Items.Add(new { Name = "Overhead Press" });
+                    cmbExercises.Items.Add(new { Name = "Lateral Raises" });
+                    cmbExercises.Items.Add(new { Name = "Front Raises" });
+                    cmbExercises.Items.Add(new { Name = "Rear Delt Flyes" });
+                    cmbExercises.Items.Add(new { Name = "Shrugs" });
+                    cmbExercises.Items.Add(new { Name = "Arnold Press" });
+                    break;
+
+                case "Arms":
+                    cmbExercises.Items.Add(new { Name = "Bicep Curls" });
+                    cmbExercises.Items.Add(new { Name = "Tricep Dips" });
+                    cmbExercises.Items.Add(new { Name = "Hammer Curls" });
+                    cmbExercises.Items.Add(new { Name = "Skull Crushers" });
+                    cmbExercises.Items.Add(new { Name = "Preacher Curls" });
+                    cmbExercises.Items.Add(new { Name = "Tricep Pushdowns" });
+                    break;
+
+                case "Legs":
+                    cmbExercises.Items.Add(new { Name = "Squats" });
+                    cmbExercises.Items.Add(new { Name = "Lunges" });
+                    cmbExercises.Items.Add(new { Name = "Leg Press" });
+                    cmbExercises.Items.Add(new { Name = "Deadlifts" });
+                    cmbExercises.Items.Add(new { Name = "Leg Curls" });
+                    cmbExercises.Items.Add(new { Name = "Calf Raises" });
+                    break;
+
+                case "Core":
+                    cmbExercises.Items.Add(new { Name = "Plank" });
+                    cmbExercises.Items.Add(new { Name = "Russian Twists" });
+                    cmbExercises.Items.Add(new { Name = "Leg Raises" });
+                    cmbExercises.Items.Add(new { Name = "Crunches" });
+                    cmbExercises.Items.Add(new { Name = "Hanging Knee Raises" });
+                    cmbExercises.Items.Add(new { Name = "Cable Woodchoppers" });
+                    break;
             }
 
             cmbExercises.DisplayMemberPath = "Name";
-            cmbExercises.SelectedIndex = 0;
+            cmbExercises.SelectedIndex = 0; // Auto-select first exercise
         }
 
         private void btnAddExercise_Click(object sender, RoutedEventArgs e)
         {
+
+          
+
             if (cmbExercises.SelectedItem == null) return;
 
             if (!int.TryParse(txtSets.Text, out int sets) || sets <= 0)
@@ -109,6 +157,23 @@ namespace FitnessProjectOOP
                 return;
             }
 
+            // Create and add the new workout template
+            var newWorkout = new WorkoutTemplate
+            {
+                Name = TemplateName,
+                MuscleGroup = SelectedMuscleGroup,
+                Exercises = Exercises.Select(ex => new WorkoutTemplate
+                {
+                    ExerciseName = ex.Name,
+                    Sets = ex.Sets,
+                    Reps = ex.Reps
+                }).ToList()
+            };
+
+            // Add to the collection
+            _workoutTemplates.Add(newWorkout);
+
+            MessageBox.Show($"Workout '{TemplateName}' created successfully!");
             DialogResult = true;
             Close();
         }

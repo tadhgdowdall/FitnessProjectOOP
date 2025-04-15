@@ -23,7 +23,7 @@ namespace FitnessProjectOOP
     public partial class MainWindow : Window
     {
 
-        private readonly ObservableCollection<WorkoutTemplate> _workoutTemplates = new ObservableCollection<WorkoutTemplate>();
+        public readonly ObservableCollection<WorkoutTemplate> _workoutTemplates = new ObservableCollection<WorkoutTemplate>();
 
         private readonly ExerciseApi _exerciseApi = new ExerciseApi();
         public MainWindow()
