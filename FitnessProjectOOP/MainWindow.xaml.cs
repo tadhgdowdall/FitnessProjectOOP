@@ -34,6 +34,11 @@ namespace FitnessProjectOOP
             // Loading sample templates
             LoadSampleTemplates();
             lbxWorkoutTemplate.ItemsSource = _workoutTemplates;
+
+
+
+
+
         }
 
         // Event handler for Border_MouseDown
@@ -53,11 +58,31 @@ namespace FitnessProjectOOP
 
         private void BtnCreateTemplate_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Creating a new workout template");
+
+            var createTemplate = new CreateTemplate();
+
+            if (createTemplate.ShowDialog() == true)
+            {
+                // Create the template object
+                var newTemplate = new
+                {
+                    Name = createTemplate.TemplateName,
+                    MuscleGroup = createTemplate.SelectedMuscleGroup,
+                    Exercises = createTemplate.Exercises.Select(ex => new WorkoutTemplate
+                    {
+                        Sets = ex.Sets,
+                        Reps = ex.Reps
+                    }).ToList()
+                };
 
 
+            
+                _workoutTemplates.Add(createTemplate.CreatedTemplate);
+                MessageBox.Show("Template created successfully!");
 
-        }
+            }
+
+            }
 
         private void LoadSampleTemplates()
         {
@@ -86,6 +111,7 @@ namespace FitnessProjectOOP
 
             _workoutTemplates.Add(chestWorkout);
             _workoutTemplates.Add(backWorkout);
+
         }
 
         //private async void btnRecommendExercises_Click(object sender, RoutedEventArgs e)
@@ -112,30 +138,6 @@ namespace FitnessProjectOOP
 
         //}
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            var createTemplate = new CreateTemplate();
-
-            if (createTemplate.ShowDialog() == true)
-            {
-                // Create the template object
-                var newTemplate = new
-                {
-                    Name = createTemplate.TemplateName,
-                    MuscleGroup = createTemplate.SelectedMuscleGroup,
-                    Exercises = createTemplate.Exercises.Select(ex => new WorkoutTemplate
-                    {
-                        Sets = ex.Sets,
-                        Reps = ex.Reps
-                    }).ToList()
-                };
-
-
-                lbxWorkoutTemplate.ItemsSource = null;
-                lbxWorkoutTemplate.ItemsSource = _workoutTemplates;
-                MessageBox.Show("Template created successfully!");
-            }
-        }
 
         private async void BtnRecommendExercises_Click_1(object sender, RoutedEventArgs e)
         {

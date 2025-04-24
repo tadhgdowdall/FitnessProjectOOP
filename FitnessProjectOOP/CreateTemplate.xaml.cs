@@ -18,7 +18,8 @@ namespace FitnessProjectOOP
         public string SelectedMuscleGroup => (cmbMuscleGroups.SelectedItem as ComboBoxItem)?.Content.ToString();
         public ObservableCollection<TemplateExercise> Exercises { get; } = new ObservableCollection<TemplateExercise>();
 
-        public readonly ObservableCollection<WorkoutTemplate> _workoutTemplates = new ObservableCollection<WorkoutTemplate>();
+
+        public WorkoutTemplate CreatedTemplate { get; private set; } // Add this property
 
         public CreateTemplate()
         {
@@ -139,6 +140,9 @@ namespace FitnessProjectOOP
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+
+
+
             if (string.IsNullOrWhiteSpace(TemplateName))
             {
                 MessageBox.Show("Please enter a template name");
@@ -158,7 +162,7 @@ namespace FitnessProjectOOP
             }
 
             // Create and add the new workout template
-            var newWorkout = new WorkoutTemplate
+            CreatedTemplate = new WorkoutTemplate
             {
                 Name = TemplateName,
                 MuscleGroup = SelectedMuscleGroup,
@@ -170,10 +174,6 @@ namespace FitnessProjectOOP
                 }).ToList()
             };
 
-            // Add to the collection
-            _workoutTemplates.Add(newWorkout);
-
-            MessageBox.Show($"Workout '{TemplateName}' created successfully!");
             DialogResult = true;
             Close();
         }
