@@ -185,5 +185,24 @@ namespace FitnessProjectOOP
                 btnRecommendExercises.IsEnabled = true;
             }
         }
-    }
+
+        private void BtnDeleteTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedTemplates = lbxWorkoutTemplate.SelectedItems.Cast<WorkoutTemplate>().ToList();
+
+            if (selectedTemplates.Count == 0)
+            {
+                MessageBox.Show("Please select a template to delete.");
+                return;
+            }
+
+            foreach (var template in selectedTemplates)
+            {
+                _workoutTemplates.Remove(template);
+            }
+
+            MessageBox.Show("Template(s) deleted successfully.");
+        }
+
+     }
 }

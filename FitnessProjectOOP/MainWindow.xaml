@@ -104,7 +104,7 @@
                         <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15">
                             <Button Content="Create Template" Width="120" Margin="5" Padding="8" Click="BtnCreateTemplate_Click"/>
 
-                            <Button Content="Delete Template" Width="120" Margin="5" Padding="8"/>
+                            <Button x:Name="BtnDeleteTemplate" Content="Delete Template" Width="120" Margin="5" Padding="8" Click="BtnDeleteTemplate_Click" />
                         </StackPanel>
                     </Grid>
                 </TabItem>
