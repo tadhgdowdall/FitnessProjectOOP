@@ -111,28 +111,77 @@
 
                 <!-- Screen 3 -->
                 <TabItem Header="Profile" Padding="10">
-                    <Grid>
-                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Width="300">
-                            <TextBlock Text="User Profile" FontSize="20" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Center"/>
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <Grid>
+                            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Width="350" Margin="0,20">
+                                <TextBlock Text="User Profile" FontSize="24" FontWeight="Bold" Margin="0,0,0,25" HorizontalAlignment="Center"/>
 
-                            <StackPanel Margin="0,0,0,15">
-                                <TextBlock Text="Name:" FontWeight="Bold"/>
-                                <TextBox Text="{Binding UserName}" Margin="0,5,0,0" Padding="5"/>
+                                <!-- Name -->
+                                <StackPanel Margin="0,0,0,15">
+                                    <TextBlock Text="Name:" FontWeight="Bold"/>
+                                    <TextBox Text="{Binding UserName}" Margin="0,5,0,0" Padding="5"/>
+                                </StackPanel>
+
+                                <!-- Age -->
+                                <StackPanel Margin="0,0,0,15">
+                                    <TextBlock Text="Age:" FontWeight="Bold"/>
+                                    <TextBox Text="{Binding Age}" Margin="0,5,0,0" Padding="5"/>
+                                </StackPanel>
+
+                                <!-- Gender -->
+                                <StackPanel Margin="0,0,0,15">
+                                    <TextBlock Text="Gender:" FontWeight="Bold"/>
+                                    <ComboBox SelectedItem="{Binding Gender}" Padding="5" Margin="0,5,0,0">
+                                        <ComboBoxItem Content="Male"/>
+                                        <ComboBoxItem Content="Female"/>
+                                        <ComboBoxItem Content="Other"/>
+                                    </ComboBox>
+                                </StackPanel>
+
+                                <!-- Height -->
+                                <StackPanel Margin="0,0,0,15">
+                                    <TextBlock Text="Height (cm):" FontWeight="Bold"/>
+                                    <TextBox Text="{Binding Height}" Margin="0,5,0,0" Padding="5"/>
+                                </StackPanel>
+
+                                <!-- Weight -->
+                                <StackPanel Margin="0,0,0,15">
+                                    <TextBlock Text="Weight (kg):" FontWeight="Bold"/>
+                                    <TextBox Text="{Binding Weight}" Margin="0,5,0,0" Padding="5"/>
+                                </StackPanel>
+
+                                <!-- Activity Level -->
+                                <StackPanel Margin="0,0,0,15">
+                                    <TextBlock Text="Activity Level:" FontWeight="Bold"/>
+                                    <ComboBox SelectedItem="{Binding ActivityLevel}" Padding="5" Margin="0,5,0,0">
+                                        <ComboBoxItem Content="Sedentary"/>
+                                        <ComboBoxItem Content="Lightly Active"/>
+                                        <ComboBoxItem Content="Moderately Active"/>
+                                        <ComboBoxItem Content="Very Active"/>
+                                        <ComboBoxItem Content="Super Active"/>
+                                    </ComboBox>
+                                </StackPanel>
+
+                                <!-- Fitness Goals -->
+                                <StackPanel Margin="0,0,0,15">
+                                    <TextBlock Text="Fitness Goals:" FontWeight="Bold"/>
+                                    <ComboBox x:Name="FitnessGoalsComboBox" SelectedItem="{Binding FitnessGoal}" Padding="5" Margin="0,5,0,0">
+                                        <ComboBoxItem Content="Lose Weight"/>
+                                        <ComboBoxItem Content="Build Muscle"/>
+                                        <ComboBoxItem Content="Improve Endurance"/>
+                                        <ComboBoxItem Content="Stay Healthy"/>
+                                    </ComboBox>
+                                </StackPanel>
+
+                                
+
+                                <!-- Save Button -->
+                                <Button Content="Save Profile" Padding="10,6" Margin="0,20" Width="150" HorizontalAlignment="Center"/>
                             </StackPanel>
-
-                            <StackPanel Margin="0,0,0,15">
-                                <TextBlock Text="Fitness Goals:" FontWeight="Bold" Margin="0,0,0,5"/>
-                                <ComboBox x:Name="FitnessGoalsComboBox" Padding="5">
-                                    <ComboBoxItem Content="Lose Weight"/>
-                                    <ComboBoxItem Content="Build Muscle"/>
-                                    <ComboBoxItem Content="Improve Endurance"/>
-                                </ComboBox>
-                            </StackPanel>
-
-                            <Button Content="Save Profile" Padding="10,6" Margin="0,20" Width="150"/>
-                        </StackPanel>
-                    </Grid>
+                        </Grid>
+                    </ScrollViewer>
                 </TabItem>
+
 
                 <!-- Screen 4 -->
                 <TabItem Header="Exercise Finder" Padding="10">
