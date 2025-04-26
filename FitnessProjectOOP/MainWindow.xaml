@@ -24,48 +24,68 @@
 
             <!-- TabControl for the main content -->
             <TabControl Grid.Row="1" Padding="5">
-                <!-- Screen 1 -->
-                <TabItem Header="Exercises" Padding="10">
-                    <Grid Margin="5">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                <TabItem Header="Home" Padding="10">
+                    <Grid Margin="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
-                        <!-- Left Side: Muscle Group Selection -->
-                        <StackPanel Grid.Column="0" Margin="10">
-                            <TextBlock Text="Select Muscle Group" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
-                            <ComboBox x:Name="MuscleGroupcbx" 
-                                      ItemsSource="{Binding MuscleGroups}" 
-                                      DisplayMemberPath="Name" 
-                                      SelectedItem="{Binding SelectedMuscleGroup}"
-                                      Margin="0,0,0,15"
-                                      Padding="5"/>
+                        <!-- Welcome Text -->
+                        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,30">
+                            <TextBlock Text="Welcome to Fitness Tracker!" 
+                       FontFamily="Roboto"
+                       FontSize="28" 
+                       FontWeight="Bold" 
+                       TextAlignment="Center"
+                       Margin="0,0,0,10"/>
 
-                            <Button x:Name="RecommendExcercisebtn" 
-                                    Content="Recommend Exercises" 
-                                    Command="{Binding RecommendExercisesCommand}"
-                                    Padding="10,5"
-                                    HorizontalAlignment="Left"/>
+                            <TextBlock Text="Track your progress, manage workouts, and reach your goals."
+                       FontFamily="Roboto"
+                       FontSize="16" 
+                       Foreground="Gray" 
+                       TextAlignment="Center"
+                       Margin="0,0,0,20"/>
                         </StackPanel>
 
-                        <!-- Right Side: Workout Templates -->
-                        <StackPanel Grid.Column="1" Margin="10">
-                            <TextBlock Text="Workout Templates" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
-                            <ListBox x:Name="WorkoutTemplatesListBox" 
-                                     ItemsSource="{Binding WorkoutTemplates}" 
-                                     DisplayMemberPath="Name" 
-                                     SelectedItem="{Binding SelectedWorkoutTemplate}" 
-                                     Height="200"
-                                     Margin="0,0,0,15"/>
+                        <!-- Action Buttons -->
+                        <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="400" Margin="0,30" Orientation="Vertical">
+                            <Button Content="Start a New Workout"
+                    Margin="0,10"
+                    Padding="12,6"
+                    Width="250"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    FontFamily="Roboto"
+                    FontSize="16"/>
 
-                            <Button Content="Create New Template" 
-                                    Command="{Binding CreateWorkoutTemplateCommand}"
-                                    Padding="10,5"
-                                    HorizontalAlignment="Left"/>
+                            <Button Content="View Workout History"
+                    Margin="0,10"
+                    Padding="12,6"
+                    Width="250"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    FontFamily="Roboto"
+                    FontSize="16"/>
+
+                            <Button Content="Manage Your Profile"
+                    Margin="0,10"
+                    Padding="12,6"
+                    Width="250"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    FontFamily="Roboto"
+                    FontSize="16"/>
+
+                            <Button Content="Explore Exercises"
+                    Margin="0,10"
+                    Padding="12,6"
+                    Width="250"
+                    Style="{StaticResource MaterialDesignOutlinedButton}"
+                    FontFamily="Roboto"
+                    FontSize="16"/>
                         </StackPanel>
                     </Grid>
                 </TabItem>
+
+
 
                 <!-- Screen 2 -->
                 <TabItem Header="Templates" Padding="10">
@@ -306,14 +326,6 @@
                 </TabItem>
             </TabControl>
 
-            <!-- Footer -->
-            <Border Grid.Row="2" Background="#EEE" Padding="10">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Button Content="Home" Padding="10,5" Margin="5" MinWidth="80"/>
-                    <Button Content="Templates" Padding="10,5" Margin="5" MinWidth="80"/>
-                    <Button Content="Profile" Padding="10,5" Margin="5" MinWidth="80"/>
-                </StackPanel>
-            </Border>
         </Grid>
     </Grid>
 </Window>
