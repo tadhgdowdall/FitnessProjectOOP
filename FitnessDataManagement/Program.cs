@@ -18,32 +18,32 @@ namespace FitnessDataManagement
             {
 
                 // Create test data
-                var chestWorkout = new WorkoutTemplate
-                {
-                    Name = "Upper Body Workout",
-                    MuscleGroup = "Chest",
-                    Exercises = new List<WorkoutExercise>
-                    {
-                        new WorkoutExercise { ExerciseName = "Bench Press", Sets = 4, Reps = 8 },
-                        new WorkoutExercise { ExerciseName = "Incline Press", Sets = 3, Reps = 10 }
-                    }
-                };
+                //var chestWorkout = new WorkoutTemplate
+                //{
+                //    Name = "Upper Body Workout",
+                //    MuscleGroup = "Chest",
+                //    Exercises = new List<WorkoutExercise>
+                //    {
+                //        new WorkoutExercise { ExerciseName = "Bench Press", Sets = 4, Reps = 8 },
+                //        new WorkoutExercise { ExerciseName = "Incline Press", Sets = 3, Reps = 10 }
+                //    }
+                //};
 
-                var backWorkout = new WorkoutTemplate
-                {
-                    Name = "Pull Day",
-                    MuscleGroup = "Back",
-                    Exercises = new List<WorkoutExercise>
-                    {
-                        new WorkoutExercise { ExerciseName = "Pull-ups", Sets = 4, Reps = 6 },
-                        new WorkoutExercise { ExerciseName = "Bent-over Rows", Sets = 3, Reps = 10 }
-                    }
-                };
+                //var backWorkout = new WorkoutTemplate
+                //{
+                //    Name = "Pull Day",
+                //    MuscleGroup = "Back",
+                //    Exercises = new List<WorkoutExercise>
+                //    {
+                //        new WorkoutExercise { ExerciseName = "Pull-ups", Sets = 4, Reps = 6 },
+                //        new WorkoutExercise { ExerciseName = "Bent-over Rows", Sets = 3, Reps = 10 }
+                //    }
+                //};
 
 
 
-                db.WorkoutTemplates.Add(chestWorkout);
-                db.WorkoutTemplates.Add(backWorkout);
+                //db.WorkoutTemplates.Add(chestWorkout);
+                //db.WorkoutTemplates.Add(backWorkout);
 
                 db.SaveChanges();
 

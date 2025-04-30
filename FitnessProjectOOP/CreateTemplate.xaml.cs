@@ -1,7 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 
 namespace FitnessProjectOOP
 {
@@ -135,7 +137,35 @@ namespace FitnessProjectOOP
             if (dgExercises.SelectedItem is TemplateExercise exercise)
             {
                 Exercises.Remove(exercise);
+
+
+                // Try catch to try and find and delete data from the database
+
+                try
+                {
+                    using (var db = new FitnessDbContext())
+                    {
+                        var existing = db.WorkoutExercises.FirstOrDefault(ex =>
+                        ex.ExerciseName == exercise.Name &&
+                        ex.Sets == exercise.Sets &&
+                            ex.Reps == exercise.Reps);
+
+                        if (existing != null)
+                        {
+                            db.WorkoutExercises.Remove(existing);
+                            db.SaveChanges();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error deleting exercise: {ex.Message}");
+                }
             }
+
+
+       
+
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
@@ -175,9 +205,25 @@ namespace FitnessProjectOOP
                 }).ToList()
             };
 
+            // Save to database
+            try
+            {
+                using (var db = new FitnessDbContext())
+                {
+                    db.WorkoutTemplates.Add(CreatedTemplate);
+                    db.SaveChanges();
+                }
 
-            DialogResult = true;
-            Close();
+                MessageBox.Show("Workout template saved to database!");
+                Console.WriteLine("Workout template is saved to database");
+                DialogResult = true;
+                Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error saving template: {ex.Message}");
+            }
+
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
