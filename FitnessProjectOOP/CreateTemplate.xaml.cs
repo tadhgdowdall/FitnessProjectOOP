@@ -166,13 +166,15 @@ namespace FitnessProjectOOP
             {
                 Name = TemplateName,
                 MuscleGroup = SelectedMuscleGroup,
-                Exercises = Exercises.Select(ex => new WorkoutTemplate
+                Exercises = Exercises.Select(ex => new WorkoutExercise
                 {
                     ExerciseName = ex.Name,
                     Sets = ex.Sets,
                     Reps = ex.Reps
+
                 }).ToList()
             };
+
 
             DialogResult = true;
             Close();

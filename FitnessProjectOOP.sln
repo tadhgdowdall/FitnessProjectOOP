@@ -5,6 +5,8 @@ VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessProjectOOP", "FitnessProjectOOP\FitnessProjectOOP.csproj", "{73E2737A-86DB-4647-929B-8195CE6E34A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FitnessDataManagement", "FitnessDataManagement\FitnessDataManagement.csproj", "{6A3F56FE-B1C7-485B-9B94-65E2836432D5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{73E2737A-86DB-4647-929B-8195CE6E34A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{73E2737A-86DB-4647-929B-8195CE6E34A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{73E2737A-86DB-4647-929B-8195CE6E34A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A3F56FE-B1C7-485B-9B94-65E2836432D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A3F56FE-B1C7-485B-9B94-65E2836432D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A3F56FE-B1C7-485B-9B94-65E2836432D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A3F56FE-B1C7-485B-9B94-65E2836432D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

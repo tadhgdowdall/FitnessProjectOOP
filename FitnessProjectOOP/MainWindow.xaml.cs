@@ -91,23 +91,24 @@ namespace FitnessProjectOOP
             {
                 Name = "Upper Body Workout",
                 MuscleGroup = "Chest",
-                Exercises = new List<WorkoutTemplate>
-            {
-                new WorkoutTemplate { ExerciseName = "Bench Press", Sets = 4, Reps = 8 },
-                new WorkoutTemplate { ExerciseName = "Incline Press", Sets = 3, Reps = 10 }
-            }
+                Exercises = new List<WorkoutExercise>
+    {
+        new WorkoutExercise { ExerciseName = "Bench Press", Sets = 4, Reps = 8 },
+        new WorkoutExercise { ExerciseName = "Incline Press", Sets = 3, Reps = 10 }
+    }
             };
 
             var backWorkout = new WorkoutTemplate
             {
                 Name = "Pull Day",
                 MuscleGroup = "Back",
-                Exercises = new List<WorkoutTemplate>
-            {
-                new WorkoutTemplate { ExerciseName = "Pull-ups", Sets = 4, Reps = 6 },
-                new WorkoutTemplate { ExerciseName = "Bent-over Rows", Sets = 3, Reps = 10 }
-            }
+                Exercises = new List<WorkoutExercise>
+    {
+        new WorkoutExercise { ExerciseName = "Pull-ups", Sets = 4, Reps = 6 },
+        new WorkoutExercise { ExerciseName = "Bent-over Rows", Sets = 3, Reps = 10 }
+    }
             };
+
 
             _workoutTemplates.Add(chestWorkout);
             _workoutTemplates.Add(backWorkout);
