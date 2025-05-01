@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitnessProjectOOP"
         mc:Ignorable="d"
-        Title="Fitness Tracker" 
-        Height="650" 
+        Title="Fitness Tracker"
+        Height="650"
         Width="900"
         MinWidth="600"
         WindowStyle="None"
@@ -14,7 +14,6 @@
         WindowStartupLocation="CenterScreen">
 
     <Grid Margin="10">
-        <!-- Main layout Grid -->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -22,8 +21,9 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <!-- TabControl for the main content -->
             <TabControl Grid.Row="1" Padding="5">
+
+                <!-- Home -->
                 <TabItem Header="Home" Padding="10">
                     <Grid Margin="20">
                         <Grid.RowDefinitions>
@@ -31,63 +31,87 @@
                             <RowDefinition Height="*"/>
                         </Grid.RowDefinitions>
 
-                        <!-- Welcome Text -->
                         <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,30">
-                            <TextBlock Text="Welcome to Fitness Tracker!" 
-                       FontFamily="Roboto"
-                       FontSize="28" 
-                       FontWeight="Bold" 
-                       TextAlignment="Center"
-                       Margin="0,0,0,10"/>
-
-                            <TextBlock Text="Track your progress, manage workouts, and reach your goals."
-                       FontFamily="Roboto"
-                       FontSize="16" 
-                       Foreground="Gray" 
-                       TextAlignment="Center"
-                       Margin="0,0,0,20"/>
+                            <TextBlock Text="Welcome to Fitness Tracker!" FontFamily="Roboto" FontSize="28" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,10"/>
+                            <TextBlock Text="Track your progress, manage workouts, and reach your goals." FontFamily="Roboto" FontSize="16" Foreground="Gray" TextAlignment="Center" Margin="0,0,0,20"/>
                         </StackPanel>
 
-                        <!-- Action Buttons -->
                         <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="400" Margin="0,30" Orientation="Vertical">
-                            <Button Content="Start a New Workout"
-                    Margin="0,10"
-                    Padding="12,6"
-                    Width="250"
-                    Style="{StaticResource MaterialDesignRaisedButton}"
-                    FontFamily="Roboto"
-                    FontSize="16"/>
-
-                            <Button Content="View Workout History"
-                    Margin="0,10"
-                    Padding="12,6"
-                    Width="250"
-                    Style="{StaticResource MaterialDesignOutlinedButton}"
-                    FontFamily="Roboto"
-                    FontSize="16"/>
-
-                            <Button Content="Manage Your Profile"
-                    Margin="0,10"
-                    Padding="12,6"
-                    Width="250"
-                    Style="{StaticResource MaterialDesignOutlinedButton}"
-                    FontFamily="Roboto"
-                    FontSize="16"/>
-
-                            <Button Content="Explore Exercises"
-                    Margin="0,10"
-                    Padding="12,6"
-                    Width="250"
-                    Style="{StaticResource MaterialDesignOutlinedButton}"
-                    FontFamily="Roboto"
-                    FontSize="16"/>
+                            <Button Content="Start a New Workout" Margin="0,10" Padding="12,6" Width="250" Style="{StaticResource MaterialDesignRaisedButton}" FontFamily="Roboto" FontSize="16"/>
+                            <Button Content="View Workout History" Margin="0,10" Padding="12,6" Width="250" Style="{StaticResource MaterialDesignOutlinedButton}" FontFamily="Roboto" FontSize="16"/>
+                            <Button Content="Manage Your Profile" Margin="0,10" Padding="12,6" Width="250" Style="{StaticResource MaterialDesignOutlinedButton}" FontFamily="Roboto" FontSize="16"/>
+                            <Button Content="Explore Exercises" Margin="0,10" Padding="12,6" Width="250" Style="{StaticResource MaterialDesignOutlinedButton}" FontFamily="Roboto" FontSize="16"/>
                         </StackPanel>
                     </Grid>
                 </TabItem>
 
+                <!-- Exercise Finder -->
+                <TabItem Header="Exercise Finder" Padding="10">
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
 
+                        <StackPanel Grid.Row="0" HorizontalAlignment="Center">
+                            <TextBlock Text="Find Exercises" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
+                            <ComboBox x:Name="cbxRecommendedExcercises" Width="250" Padding="5">
+                                <ComboBoxItem Content="Back"/>
+                                <ComboBoxItem Content="Chest"/>
+                                <ComboBoxItem Content="Shoulders"/>
+                                <ComboBoxItem Content="Upper Arms"/>
+                                <ComboBoxItem Content="Lower Arms"/>
+                                <ComboBoxItem Content="Cardio"/>
+                            </ComboBox>
+                            <Button x:Name="btnRecommendExercises" Content="Recommend Exercises" Margin="0,15,0,0" Padding="8,5" HorizontalAlignment="Center" Click="BtnRecommendExercises_Click_1"/>
+                        </StackPanel>
 
-                <!-- Screen 2 -->
+                        <StackPanel Grid.Row="1" Margin="0,20">
+                            <TextBlock Text="Recommended Exercises:" FontWeight="Bold" Margin="0,0,0,5"/>
+                            <ListBox x:Name="lbxRecommendedExercises" Height="200" ScrollViewer.VerticalScrollBarVisibility="Auto">
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+
+                                <ListBox.ItemContainerStyle>
+                                    <Style TargetType="ListBoxItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="ListBoxItem">
+                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </ListBox.ItemContainerStyle>
+
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Width="300" Margin="5" Padding="10" Background="#FFF5F5F5" CornerRadius="3">
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding name}" FontWeight="Bold" TextWrapping="Wrap" HorizontalAlignment="Center"/>
+                                                <StackPanel Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Center">
+                                                    <TextBlock Text="Equipment: " FontWeight="SemiBold"/>
+                                                    <TextBlock Text="{Binding equipment}" FontStyle="Italic"/>
+                                                </StackPanel>
+                                                <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Center">
+                                                    <TextBlock Text="Target: " FontWeight="SemiBold"/>
+                                                    <TextBlock Text="{Binding target}" Foreground="#FF555555"/>
+                                                </StackPanel>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                        </StackPanel>
+                    </Grid>
+                </TabItem>
+
+                <!-- Templates -->
                 <TabItem Header="Templates" Padding="10">
                     <Grid Margin="10">
                         <Grid.RowDefinitions>
@@ -96,21 +120,13 @@
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
-                        <!-- Title -->
-                        <TextBlock Grid.Row="0" 
-                   Text="Workout Templates" 
-                   FontSize="20" 
-                   FontWeight="Bold" 
-                   HorizontalAlignment="Center" 
-                   Margin="0,10"/>
-
-                        <!-- Templates List -->
+                        <TextBlock Grid.Row="0" Text="Workout Templates" FontSize="20" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,10"/>
                         <ListBox Grid.Row="1" x:Name="lbxWorkoutTemplate" Margin="10" Padding="5">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Margin="0,5">
                                         <TextBlock Text="{Binding Name}" FontSize="14" FontWeight="Bold" Margin="0,0,0,2"/>
-                                        <TextBlock Text="{Binding MuscleGroup}" FontSize="12" FontStyle="Italic" Foreground="Gray" Margin="0,0,0,5"/>
+                                        <TextBlock Text="{Binding MuscleGroup}" FontSize="12" FontStyle="Italic" Foreground="Gray"/>
                                         <ItemsControl ItemsSource="{Binding Exercises}">
                                             <ItemsControl.ItemTemplate>
                                                 <DataTemplate>
@@ -128,42 +144,54 @@
                             </ListBox.ItemTemplate>
                         </ListBox>
 
-                        <!-- Action Buttons -->
-                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,10">
-                            <Button Content="Create Template" 
-                    Width="120" Margin="5" Padding="8" 
-                    Click="BtnCreateTemplate_Click"
-                    Style="{StaticResource MaterialDesignRaisedButton}"/>
-                            <Button x:Name="BtnDeleteTemplate" 
-                    Content="Delete Template" 
-                    Width="120" Margin="5" Padding="8" 
-                    Click="BtnDeleteTemplate_Click"
-                    Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15">
+                            <Button Content="Create Template" Width="120" Margin="5" Padding="8" Click="BtnCreateTemplate_Click" Style="{StaticResource MaterialDesignRaisedButton}"/>
+                            <Button x:Name="BtnDeleteTemplate" Content="Delete Template" Width="120" Margin="5" Padding="8" Click="BtnDeleteTemplate_Click" Style="{StaticResource MaterialDesignOutlinedButton}"/>
+                            <Button Content="Start Workout" Width="120" Margin="5" Padding="8" Click="BtnStartWorkout_Click" Style="{StaticResource MaterialDesignRaisedButton}"/>
+
                         </StackPanel>
                     </Grid>
                 </TabItem>
 
+           
 
-                <!-- Screen 3 -->
+                <!-- History -->
+                <TabItem Header="History" Padding="10">
+                    <Grid Margin="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Row="0" Text="Workout History" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+                        <DataGrid Grid.Row="1" x:Name="WorkoutHistoryGrid" AutoGenerateColumns="False" Padding="5">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"/>
+                                <DataGridTextColumn Header="Workout" Binding="{Binding WorkoutName}" Width="*"/>
+                                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Grid>
+                </TabItem>
+
+                <!-- Profile -->
                 <TabItem Header="Profile" Padding="10">
                     <ScrollViewer VerticalScrollBarVisibility="Auto">
                         <Grid>
                             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Center" Width="350" Margin="0,20">
                                 <TextBlock Text="User Profile" FontSize="24" FontWeight="Bold" Margin="0,0,0,25" HorizontalAlignment="Center"/>
 
-                                <!-- Name -->
+                                <!-- Profile Inputs -->
                                 <StackPanel Margin="0,0,0,15">
                                     <TextBlock Text="Name:" FontWeight="Bold"/>
                                     <TextBox Text="{Binding UserName}" Margin="0,5,0,0" Padding="5"/>
                                 </StackPanel>
 
-                                <!-- Age -->
                                 <StackPanel Margin="0,0,0,15">
                                     <TextBlock Text="Age:" FontWeight="Bold"/>
                                     <TextBox Text="{Binding Age}" Margin="0,5,0,0" Padding="5"/>
                                 </StackPanel>
 
-                                <!-- Gender -->
                                 <StackPanel Margin="0,0,0,15">
                                     <TextBlock Text="Gender:" FontWeight="Bold"/>
                                     <ComboBox SelectedItem="{Binding Gender}" Padding="5" Margin="0,5,0,0">
@@ -173,19 +201,16 @@
                                     </ComboBox>
                                 </StackPanel>
 
-                                <!-- Height -->
                                 <StackPanel Margin="0,0,0,15">
                                     <TextBlock Text="Height (cm):" FontWeight="Bold"/>
                                     <TextBox Text="{Binding Height}" Margin="0,5,0,0" Padding="5"/>
                                 </StackPanel>
 
-                                <!-- Weight -->
                                 <StackPanel Margin="0,0,0,15">
                                     <TextBlock Text="Weight (kg):" FontWeight="Bold"/>
                                     <TextBox Text="{Binding Weight}" Margin="0,5,0,0" Padding="5"/>
                                 </StackPanel>
 
-                                <!-- Activity Level -->
                                 <StackPanel Margin="0,0,0,15">
                                     <TextBlock Text="Activity Level:" FontWeight="Bold"/>
                                     <ComboBox SelectedItem="{Binding ActivityLevel}" Padding="5" Margin="0,5,0,0">
@@ -197,7 +222,6 @@
                                     </ComboBox>
                                 </StackPanel>
 
-                                <!-- Fitness Goals -->
                                 <StackPanel Margin="0,0,0,15">
                                     <TextBlock Text="Fitness Goals:" FontWeight="Bold"/>
                                     <ComboBox x:Name="FitnessGoalsComboBox" SelectedItem="{Binding FitnessGoal}" Padding="5" Margin="0,5,0,0">
@@ -208,139 +232,13 @@
                                     </ComboBox>
                                 </StackPanel>
 
-                                
-
-                                <!-- Save Button -->
                                 <Button Content="Save Profile" Padding="10,6" Margin="0,20" Width="150" HorizontalAlignment="Center"/>
                             </StackPanel>
                         </Grid>
                     </ScrollViewer>
                 </TabItem>
 
-
-                <!-- Screen 4 -->
-                <TabItem Header="Exercise Finder" Padding="10">
-                    <Grid Margin="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <StackPanel Grid.Row="0" HorizontalAlignment="Center">
-                            <TextBlock Text="Find Exercises" FontSize="16" FontWeight="Bold" Margin="0,0,0,10"/>
-
-                            <ComboBox x:Name="cbxRecommendedExcercises" Width="250" Padding="5">
-                                <ComboBoxItem Content="Back"/>
-                                <ComboBoxItem Content="Chest"/>
-                                <ComboBoxItem Content="Shoulders"/>
-                                <ComboBoxItem Content="Upper Arms"/>
-                                <ComboBoxItem Content="Lower Arms"/>
-                                <ComboBoxItem Content="Cardio"/>
-                            </ComboBox>
-
-                            <Button x:Name="btnRecommendExercises" 
-                    Content="Recommend Exercises" 
-                    Margin="0,15,0,0" 
-                    Padding="8,5"
-                    HorizontalAlignment="Center"
-                    Click="BtnRecommendExercises_Click_1"/>
-                        </StackPanel>
-
-                        <StackPanel Grid.Row="1" Margin="0,20">
-                            <TextBlock Text="Recommended Exercises:" FontWeight="Bold" Margin="0,0,0,5"/>
-                            <ListBox x:Name="lbxRecommendedExercises" Height="200" ScrollViewer.VerticalScrollBarVisibility="Auto">
-                                <!-- Center items in the ListBox -->
-                                <ListBox.ItemsPanel>
-                                    <ItemsPanelTemplate>
-                                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                    </ItemsPanelTemplate>
-                                </ListBox.ItemsPanel>
-
-                       
-                                <ListBox.ItemContainerStyle>
-                                    <Style TargetType="ListBoxItem">
-                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                                        <Setter Property="Background" Value="Transparent"/>
-                                        <Setter Property="Template">
-                                            <Setter.Value>
-                                                <ControlTemplate TargetType="ListBoxItem">
-                                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                                </ControlTemplate>
-                                            </Setter.Value>
-                                        </Setter>
-                                    </Style>
-                                </ListBox.ItemContainerStyle>
-
-                                <ListBox.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border Width="300" Margin="5" Padding="10" Background="#FFF5F5F5" CornerRadius="3"
-                    HorizontalAlignment="Center" VerticalAlignment="Center">
-                                            <StackPanel>
-                                                <TextBlock Text="{Binding name}" 
-                               FontWeight="Bold"
-                               TextWrapping="Wrap"
-                               HorizontalAlignment="Center"/>
-                                                <StackPanel Orientation="Horizontal" Margin="0,5,0,0" HorizontalAlignment="Center">
-                                                    <TextBlock Text="Equipment: " FontWeight="SemiBold"/>
-                                                    <TextBlock Text="{Binding equipment}" 
-                                   FontStyle="Italic"
-                                   TextWrapping="Wrap"/>
-                                                </StackPanel>
-                                                <StackPanel Orientation="Horizontal" Margin="0,2,0,0" HorizontalAlignment="Center">
-                                                    <TextBlock Text="Target: " FontWeight="SemiBold"/>
-                                                    <TextBlock Text="{Binding target}" 
-                                   Foreground="#FF555555"
-                                   TextWrapping="Wrap"/>
-                                                </StackPanel>
-                                            </StackPanel>
-                                        </Border>
-                                    </DataTemplate>
-                                </ListBox.ItemTemplate>
-                            </ListBox>
-                        </StackPanel>
-                    </Grid>
-                </TabItem>
-                <!-- Screen 5 -->
-                <TabItem Header="Workouts" Padding="10">
-                    <Grid Margin="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="*"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-
-                        <StackPanel Grid.Row="0">
-                            <TextBlock Text="My Workout Templates" FontSize="18" FontWeight="Bold" Margin="0,0,0,15"/>
-                            <ListBox x:Name="lbxWorkoutTemplates" Height="250" Padding="5"/>
-                        </StackPanel>
-
-                        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15">
-                            <Button Content="Start Workout" Width="120" Margin="5" Padding="8"/>
-                            <Button x:Name="btnCreateTemplate" Content="Create Template" Width="120" Margin="5" Padding="8"/>
-                        </StackPanel>
-                    </Grid>
-                </TabItem>
-
-                <!-- Screen 6 -->
-                <TabItem Header="History" Padding="10">
-                    <Grid Margin="10">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
-
-                        <TextBlock Grid.Row="0" Text="Workout History" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-
-                        <DataGrid Grid.Row="1" x:Name="WorkoutHistoryGrid" AutoGenerateColumns="False" Padding="5">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"/>
-                                <DataGridTextColumn Header="Workout" Binding="{Binding WorkoutName}" Width="*"/>
-                                <DataGridTextColumn Header="Duration" Binding="{Binding Duration}" Width="*"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </Grid>
-                </TabItem>
             </TabControl>
-
         </Grid>
     </Grid>
 </Window>

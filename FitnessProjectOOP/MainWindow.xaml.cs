@@ -86,7 +86,7 @@ namespace FitnessProjectOOP
 
         private void LoadSampleTemplates()
         {
-            // Sample data - replace with your actual loading logic
+            // Sample data which will  be used on load
             var chestWorkout = new WorkoutTemplate
             {
                 Name = "Upper Body Workout",
@@ -152,34 +152,29 @@ namespace FitnessProjectOOP
 
             try
             {
-                // Show loading state
+                //  loading 
                 lbxRecommendedExercises.ItemsSource = new List<string> { "Loading exercises..." };
                 btnRecommendExercises.IsEnabled = false;
-                lbxRecommendedExercises.Items.Refresh(); // Force UI update
+                lbxRecommendedExercises.Items.Refresh(); // Refreshes the UI 
 
                 var exercises = await _exerciseApi.GetExercisesByBodyPartAsync(selectedMuscleGroup);
 
-                // Debug output to verify data
-                Debug.WriteLine($"Received {exercises?.Count} exercises");
+  
                 if (exercises?.Count > 0)
                 {
                     Debug.WriteLine($"First exercise: {exercises[0].name} | {exercises[0].equipment}");
                 }
 
-                Application.Current.Dispatcher.Invoke(() =>
-                {
-                    // Set the ItemsSource directly - the ToString() will handle formatting
+       
+
+                    // Puts recommended exercises into listbox
                     lbxRecommendedExercises.ItemsSource = exercises;
 
-             
-                    // lbxRecommendedExercises.DisplayMemberPath = "name";
-                    // lbxRecommendedExercises.ItemsSource = exercises;
-                });
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error fetching exercises: {ex.Message}");
-                lbxRecommendedExercises.ItemsSource = new List<string> { "Failed to load exercises" };
+
             }
             finally
             {
@@ -205,5 +200,19 @@ namespace FitnessProjectOOP
             MessageBox.Show("Template(s) deleted successfully.");
         }
 
-     }
+        private void BtnStartWorkout_Click(object sender, RoutedEventArgs e)
+        {
+            if (lbxWorkoutTemplate.SelectedItem is WorkoutTemplate selectedTemplate)
+            {
+                // create instance of new window and pass in the selected item
+                var sessionWindow = new WorkoutSessionWindow(selectedTemplate);  
+                sessionWindow.Owner = this;
+                sessionWindow.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Please select a workout template to start.");
+            }
+        }
+    }
 }

@@ -30,7 +30,7 @@ namespace FitnessProjectOOP
 
     public class WorkoutExercise
     {
-        public int Id { get; set; } // Required for EF primary key
+        public int Id { get; set; } 
         public string ExerciseName { get; set; }
         public int Sets { get; set; }
         public int Reps { get; set; }
@@ -47,5 +47,31 @@ namespace FitnessProjectOOP
         public DbSet<WorkoutTemplate> WorkoutTemplates { get; set; }
         public DbSet<WorkoutExercise> WorkoutExercises { get; set; }
     }
+
+
+    // Used for tracking the workout sessions 
+    public class WorkoutSession
+    {
+        public int Id { get; set; }
+        public string TemplateName { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
+        public string Notes { get; set; }
+        public int DurationMinutes { get; set; }
+
+        public virtual ICollection<CompletedExercise> CompletedExercises { get; set; } = new List<CompletedExercise>();
+    }
+
+    public class CompletedExercise
+    {
+        public int Id { get; set; }
+        public string ExerciseName { get; set; }
+        public int Sets { get; set; }
+        public int Reps { get; set; }
+        public bool IsCompleted { get; set; }
+
+        public int WorkoutSessionId { get; set; }
+        public virtual WorkoutSession WorkoutSession { get; set; }
+    }
+
 
 }
