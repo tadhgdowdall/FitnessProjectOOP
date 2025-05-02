@@ -138,12 +138,6 @@ namespace FitnessProjectOOP
 
 
 
-
-
-
-        //}
-
-
         // Uses API service to recommend exercise 
         private async void BtnRecommendExercises_Click_1(object sender, RoutedEventArgs e)
         {

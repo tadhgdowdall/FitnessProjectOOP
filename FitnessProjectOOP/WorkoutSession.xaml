@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FitnessProjectOOP"
         mc:Ignorable="d"
-        Title="WorkoutSession" Height="500" Width="600" WindowStartupLocation="CenterOwner">
-    <Grid Margin="15">
+        Title="Workout Session"
+        Height="520"
+        Width="650"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanResizeWithGrip"
+        Background="#FAFAFA">
+
+    <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -15,45 +21,64 @@
 
         <!-- Header -->
         <StackPanel Grid.Row="0" Margin="0,0,0,10">
-            <TextBlock x:Name="txtTemplateName" FontSize="20" FontWeight="Bold"/>
-            <TextBlock Text="{Binding Date, StringFormat='{}{0:MMMM dd, yyyy HH:mm}'}" Foreground="Gray"/>
+            <TextBlock x:Name="txtTemplateName"
+                       FontSize="24"
+                       FontWeight="Bold"
+                       Foreground="#333"/>
+            <TextBlock Text="{Binding Date, StringFormat='{}{0:MMMM dd, yyyy HH:mm}'}"
+                       FontSize="14"
+                       Foreground="Gray"
+                       Margin="0,2,0,0"/>
         </StackPanel>
 
         <!-- Exercises -->
-        <ScrollViewer Grid.Row="1">
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
             <ItemsControl x:Name="exerciseList">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal" Margin="5">
-                            <CheckBox IsChecked="{Binding IsCompleted}" VerticalAlignment="Center" Margin="0,0,10,0"/>
-                            <TextBlock Text="{Binding ExerciseName}" FontWeight="Bold"/>
-                            <TextBlock Text=" — " />
-                            <TextBlock Text="{Binding Sets}" />
-                            <TextBlock Text=" x " />
-                            <TextBlock Text="{Binding Reps}" />
-                        </StackPanel>
+                        <Border Background="#FFF5F5F5"
+                                CornerRadius="4"
+                                Padding="8"
+                                Margin="0,4">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                <CheckBox IsChecked="{Binding IsCompleted}" Margin="0,0,10,0"/>
+                                <TextBlock Text="{Binding ExerciseName}" FontWeight="Bold" Margin="0,0,5,0"/>
+                                <TextBlock Text="–" Margin="2,0"/>
+                                <TextBlock Text="{Binding Sets}" Margin="5,0"/>
+                                <TextBlock Text="x" Margin="2,0"/>
+                                <TextBlock Text="{Binding Reps}" Margin="2,0"/>
+                            </StackPanel>
+                        </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
 
         <!-- Footer -->
-        <StackPanel Grid.Row="2" Margin="0,10,0,0">
-            <StackPanel Orientation="Horizontal" Margin="0,5">
-                <TextBlock Text="Duration (min):" Width="120"/>
-                <TextBox x:Name="txtDuration" Width="100"/>
+        <StackPanel Grid.Row="2" Margin="0,20,0,0">
+            <StackPanel Orientation="Horizontal" Margin="0,5" VerticalAlignment="Center">
+                <TextBlock Text="Duration (min):" Width="130" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtDuration"
+                         Width="100"
+                         Padding="5"
+                         Margin="0,0,0,5"/>
             </StackPanel>
 
             <StackPanel Margin="0,10,0,0">
-                <TextBlock Text="Notes:"/>
-                <TextBox x:Name="txtNotes" Height="60" TextWrapping="Wrap" AcceptsReturn="True"/>
+                <TextBlock Text="Notes:" Margin="0,0,0,4"/>
+                <TextBox x:Name="txtNotes"
+                         Height="60"
+                         TextWrapping="Wrap"
+                         AcceptsReturn="True"
+                         Padding="6"/>
             </StackPanel>
 
-            <Button Content="Finish &amp; Save" 
-            HorizontalAlignment="Right" 
-            Width="120" 
-            Margin="0,15,0,0" 
-            Click="FinishAndSave_Click"/>
+            <Button Content="Finish &amp; Save"
+                    Width="140"
+                    Margin="0,20,0,0"
+                    Padding="10,6"
+                    HorizontalAlignment="Right"
+                    Click="FinishAndSave_Click"/>
         </StackPanel>
     </Grid>
-</Window>
+    </Window>
