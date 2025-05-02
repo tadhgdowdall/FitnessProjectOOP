@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,6 +28,8 @@ namespace FitnessProjectOOP
         public readonly ObservableCollection<WorkoutTemplate> _workoutTemplates = new ObservableCollection<WorkoutTemplate>();
 
         private readonly ExerciseApi _exerciseApi = new ExerciseApi();
+
+        private readonly string profileFilePath = "userprofile.json";
         public MainWindow()
         {
 
@@ -140,6 +144,7 @@ namespace FitnessProjectOOP
         //}
 
 
+        // Uses API service to recommend exercise 
         private async void BtnRecommendExercises_Click_1(object sender, RoutedEventArgs e)
         {
             if (cbxRecommendedExcercises.SelectedItem == null)
@@ -182,6 +187,8 @@ namespace FitnessProjectOOP
             }
         }
 
+
+        // Deletes Template on Button Click
         private void BtnDeleteTemplate_Click(object sender, RoutedEventArgs e)
         {
             var selectedTemplates = lbxWorkoutTemplate.SelectedItems.Cast<WorkoutTemplate>().ToList();
@@ -213,6 +220,32 @@ namespace FitnessProjectOOP
             {
                 MessageBox.Show("Please select a workout template to start.");
             }
+        }
+
+
+        // Navigates Tabs From home Page
+        private void BtnStartWorkoutHome_Click(object sender, RoutedEventArgs e)
+        {
+
+            TabControl.SelectedItem = TemplateManagementTab;
+
+        }
+
+        private void BtnManageProfile_Click(object sender, RoutedEventArgs e)
+        {
+            TabControl.SelectedItem = ProfileTab;
+        }
+
+        private void BtnExploreExercise_Click(object sender, RoutedEventArgs e)
+        {
+            TabControl.SelectedItem = ExerciseFinderTab;
+        }
+
+        private void BtnSaveProfile_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            MessageBox.Show("Profile saved successfully.");
         }
     }
 }
