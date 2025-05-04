@@ -34,7 +34,7 @@ namespace FitnessProjectOOP
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<Exercise>>(body);
+                return JsonConvert.DeserializeObject<List<Exercise>>(body); // Converts response to json 
             }
             catch
             {

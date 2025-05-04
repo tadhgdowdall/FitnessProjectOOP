@@ -12,6 +12,8 @@ namespace FitnessDataManagement
         static void Main(string[] args)
         {
 
+            // Used to create sample data for database
+
             FitnessDbContext db = new FitnessDbContext();
 
             using (db)

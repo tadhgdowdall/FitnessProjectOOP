@@ -22,6 +22,9 @@ namespace FitnessProjectOOP
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    /// 
+
+    // Github is tadhgdowdall and FitnessProjectOOP as the repo. 
     public partial class MainWindow : Window
     {
 
@@ -66,6 +69,7 @@ namespace FitnessProjectOOP
                 // Create the template object
                 var newTemplate = new
                 {
+                    // Gets the Name, Muscle Group, Exercises etc
                     Name = createTemplate.TemplateName,
                     MuscleGroup = createTemplate.SelectedMuscleGroup,
                     Exercises = createTemplate.Exercises.Select(ex => new WorkoutTemplate
@@ -114,24 +118,6 @@ namespace FitnessProjectOOP
             _workoutTemplates.Add(backWorkout);
 
         }
-
-        //private async void btnRecommendExercises_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //    // Gets selected combobox item and puts the value into string name
-        //    ComboBoxItem ComboItem = (ComboBoxItem)cbxRecommendedExcercises.SelectedItem;
-        //    string name = ComboItem.Name;
-
-        //    Console.WriteLine(name);
-
-        //    ExerciseApi exerciseApi = new ExerciseApi();
-
-
-        //    exerciseApi.BodyPart = name.ToLower();
-
-        //    await exerciseApi.FetchExercisesAsync();
-
-
 
 
         // Uses API service to recommend exercise 
