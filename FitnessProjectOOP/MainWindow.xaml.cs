@@ -45,7 +45,7 @@ namespace FitnessProjectOOP
 
         }
 
-        // Event handler for Border_MouseDown
+        
         private void Border_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.ChangedButton == MouseButton.Left)
@@ -54,16 +54,12 @@ namespace FitnessProjectOOP
             }
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-
-        }
 
         private void BtnCreateTemplate_Click(object sender, RoutedEventArgs e)
         {
 
             var createTemplate = new CreateTemplate();
+            createTemplate.Owner = this;
 
             if (createTemplate.ShowDialog() == true)
             {
@@ -156,16 +152,9 @@ namespace FitnessProjectOOP
                 btnRecommendExercises.IsEnabled = false;
                 lbxRecommendedExercises.Items.Refresh(); // Refreshes the UI 
 
-                var exercises = await _exerciseApi.GetExercisesByBodyPartAsync(selectedMuscleGroup);
+                var exercises = await _exerciseApi.GetExercisesByBodyPartAsync(selectedMuscleGroup); // Uses API to get exercises
 
   
-                if (exercises?.Count > 0)
-                {
-                    Debug.WriteLine($"First exercise: {exercises[0].name} | {exercises[0].equipment}");
-                }
-
-       
-
                     // Puts recommended exercises into listbox
                     lbxRecommendedExercises.ItemsSource = exercises;
 
@@ -185,7 +174,7 @@ namespace FitnessProjectOOP
         // Deletes Template on Button Click
         private void BtnDeleteTemplate_Click(object sender, RoutedEventArgs e)
         {
-            var selectedTemplates = lbxWorkoutTemplate.SelectedItems.Cast<WorkoutTemplate>().ToList();
+            var selectedTemplates = lbxWorkoutTemplate.SelectedItems.Cast<WorkoutTemplate>().ToList(); // Converts the object to a workoutTemplate
 
             if (selectedTemplates.Count == 0)
             {
@@ -217,6 +206,7 @@ namespace FitnessProjectOOP
         }
 
 
+
         // Navigates Tabs From home Page
         private void BtnStartWorkoutHome_Click(object sender, RoutedEventArgs e)
         {
@@ -237,8 +227,6 @@ namespace FitnessProjectOOP
 
         private void BtnSaveProfile_Click(object sender, RoutedEventArgs e)
         {
-
-
             MessageBox.Show("Profile saved successfully.");
         }
     }

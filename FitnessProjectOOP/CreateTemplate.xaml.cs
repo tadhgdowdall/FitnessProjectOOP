@@ -16,18 +16,22 @@ namespace FitnessProjectOOP
             public int Reps { get; set; }
         }
 
-        public string TemplateName => txtTemplateName.Text;
-        public string SelectedMuscleGroup => (cmbMuscleGroups.SelectedItem as ComboBoxItem)?.Content.ToString();
-        public ObservableCollection<TemplateExercise> Exercises { get; } = new ObservableCollection<TemplateExercise>();
+
+        public ObservableCollection<TemplateExercise> Exercises { get; } = new ObservableCollection<TemplateExercise>(); // Creates a collection of exercises for the current template
 
 
-        public WorkoutTemplate CreatedTemplate { get; private set; } // Add this property
+        public WorkoutTemplate CreatedTemplate { get; private set; } 
+
+        public string TemplateName => txtTemplateName.Text; // Returns Name of template
+        public string SelectedMuscleGroup => (cmbMuscleGroups.SelectedItem as ComboBoxItem).Content.ToString(); // gets the selected musclegroup from combo box
 
         public CreateTemplate()
         {
             InitializeComponent();
             dgExercises.ItemsSource = Exercises;
         }
+
+
 
         private void cmbMuscleGroups_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -104,6 +108,7 @@ namespace FitnessProjectOOP
             cmbExercises.SelectedIndex = 0; // Auto-select first exercise
         }
 
+        //Adds exercise to your template
         private void btnAddExercise_Click(object sender, RoutedEventArgs e)
         {
 
@@ -168,6 +173,8 @@ namespace FitnessProjectOOP
 
         }
 
+
+        // Button To Save Template
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
 

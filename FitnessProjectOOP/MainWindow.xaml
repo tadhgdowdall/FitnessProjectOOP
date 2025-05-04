@@ -33,7 +33,7 @@
 
                         <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,30">
                             <TextBlock Text="Welcome to Fitness Tracker!" FontFamily="Roboto" FontSize="28" FontWeight="Bold" TextAlignment="Center" Margin="0,0,0,10"/>
-                            <TextBlock Text="Track your progress, manage workouts, and reach your goals." FontFamily="Roboto" FontSize="16" Foreground="Gray" TextAlignment="Center" Margin="0,0,0,20"/>
+                            <TextBlock Text="Manage workouts, discover exercises and reach your goals." FontFamily="Roboto" FontSize="16" Foreground="Gray" TextAlignment="Center" Margin="0,0,0,20"/>
                         </StackPanel>
 
                         <StackPanel Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Center" Width="400" Margin="0,30" Orientation="Vertical">

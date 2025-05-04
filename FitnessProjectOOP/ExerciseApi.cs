@@ -14,6 +14,8 @@ namespace FitnessProjectOOP
     {
         private static readonly HttpClient client = new HttpClient();
 
+        // Calls the API for the specific body part, it returns a list of exercises 
+
         public async Task<List<Exercise>> GetExercisesByBodyPartAsync(string bodyPart)
         {
             var request = new HttpRequestMessage

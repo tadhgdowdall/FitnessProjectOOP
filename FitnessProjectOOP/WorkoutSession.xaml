@@ -10,7 +10,8 @@
         Width="650"
         WindowStartupLocation="CenterOwner"
         ResizeMode="CanResizeWithGrip"
-        Background="#FAFAFA">
+        Background="#FAFAFA"
+         MinWidth="400">
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
